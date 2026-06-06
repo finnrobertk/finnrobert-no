@@ -1,0 +1,92 @@
+/* Globale stiler — bygger på design-tokens (tokens.css).
+   Holdt minimal: typografi for lange fagtekster prioriteres. */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  line-height: var(--leading-body);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-heading);
+  line-height: var(--leading-heading);
+  font-weight: var(--weight-semibold);
+  margin: 0 0 var(--space-sm);
+}
+h1 { font-size: var(--text-3xl); }
+h2 { font-size: var(--text-2xl); }
+h3 { font-size: var(--text-xl); }
+
+p { margin: 0 0 var(--space-md); }
+
+a {
+  color: var(--color-primary);
+  text-underline-offset: 2px;
+}
+a:hover { color: var(--color-primary-strong); }
+
+img { max-width: 100%; height: auto; }
+
+code, pre { font-family: var(--font-mono); font-size: 0.9em; }
+code {
+  background: var(--color-surface);
+  padding: 0.15em 0.4em;
+  border-radius: var(--radius-sm);
+}
+pre {
+  background: var(--color-surface);
+  padding: var(--space-md);
+  border-radius: var(--radius-lg);
+  overflow-x: auto;
+  border: 1px solid var(--color-border);
+}
+pre code { background: none; padding: 0; }
+
+hr { border: none; border-top: 1px solid var(--color-border); margin: var(--space-lg) 0; }
+
+/* Layout-hjelpere */
+.wrap {
+  width: 100%;
+  max-width: 72rem;
+  margin-inline: auto;
+  padding-inline: var(--space-md);
+}
+.prose { max-width: var(--measure); }
+.prose > * + * { margin-top: var(--space-md); }
+.prose h2 { margin-top: var(--space-lg); }
+
+.muted { color: var(--color-text-muted); }
+.text-sm { font-size: var(--text-sm); }
+
+/* Knapp / pille */
+.btn {
+  display: inline-block;
+  background: var(--color-primary);
+  color: var(--color-on-primary);
+  padding: var(--space-2xs) var(--space-md);
+  border-radius: var(--radius-full);
+  text-decoration: none;
+  font-weight: var(--weight-medium);
+}
+.btn:hover { background: var(--color-primary-strong); color: var(--color-on-primary); }
+
+.tag {
+  display: inline-block;
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  padding: 2px var(--space-2xs);
+  border-radius: var(--radius-full);
+}
+
+:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 2px; }

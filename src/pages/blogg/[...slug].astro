@@ -1,0 +1,25 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+export async function getStaticPaths() {
+  const innlegg = await getCollection('blogg', ({ data }) => !data.utkast);
+  return innlegg.map((post) => ({ params: { slug: post.id }, props: { post } }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+const datoFmt = (d: Date) => d.toLocaleDateString('nb-NO', { day: 'numeric', month: 'long', year: 'numeric' });
+---
+
+<BaseLayout tittel={post.data.tittel} beskrivelse={post.data.ingress}>
+  <article class="prose">
+    <a href="/blogg" class="text-sm muted">← Alle innlegg</a>
+    <header style="margin-block: var(--space-md) var(--space-lg);">
+      <time class="muted text-sm" datetime={post.data.dato.toISOString()}>{datoFmt(post.data.dato)}</time>
+      <h1 style="margin-top: var(--space-2xs);">{post.data.tittel}</h1>
+      <p class="muted" style="font-size: var(--text-lg);">{post.data.ingress}</p>
+    </header>
+    <Content />
+  </article>
+</BaseLayout>

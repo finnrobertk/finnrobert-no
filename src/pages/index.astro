@@ -1,0 +1,107 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const pilarer = [
+  { tittel: 'Context engineering', tekst: 'Hvordan du faktisk gir AI riktig kontekst — det som skiller bra fra dårlig AI-bruk.' },
+  { tittel: 'Praktisk agent-bruk', tekst: 'Claude Code-arbeidsflyt og ekte oppsett, vist gjennom mitt eget personlige AI-lager.' },
+  { tittel: 'Fra senior utvikler til AI-forsterket', tekst: 'For erfarne utviklere som vil endre måten de jobber på.' },
+  { tittel: 'KI for norske selskaper', tekst: 'Avmystifisering — hva som gir reell verdi, og hva som bare er støy.' },
+];
+
+const innlegg = (await getCollection('blogg', ({ data }) => !data.utkast))
+  .sort((a, b) => b.data.dato.valueOf() - a.data.dato.valueOf())
+  .slice(0, 3);
+
+const datoFmt = (d: Date) => d.toLocaleDateString('nb-NO', { day: 'numeric', month: 'long', year: 'numeric' });
+---
+
+<BaseLayout>
+  <section class="hero">
+    <p class="hero__kicker">AI · context engineering · på norsk</p>
+    <h1 class="hero__title">AI og context engineering — forklart på norsk, vist i praksis.</h1>
+    <p class="hero__lead prose">
+      Jeg er Finn-Robert — erfaren utvikler som deler hvordan jeg faktisk jobber med AI og agenter.
+      Ingen hype, ingen «10x»-løfter. Bare praktiske oppsett og det jeg lærer underveis.
+    </p>
+    <p>
+      <a href="/blogg" class="btn">Les bloggen</a>
+      <a href="/om" style="margin-left: var(--space-sm);">Mer om meg →</a>
+    </p>
+  </section>
+
+  <section style="margin-top: var(--space-2xl);">
+    <h2>Hva jeg skriver om</h2>
+    <div class="pilarer">
+      {pilarer.map((p) => (
+        <article class="kort">
+          <h3>{p.tittel}</h3>
+          <p class="muted">{p.tekst}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  {innlegg.length > 0 && (
+    <section style="margin-top: var(--space-2xl);">
+      <h2>Siste innlegg</h2>
+      <ul class="liste">
+        {innlegg.map((post) => (
+          <li>
+            <a href={`/blogg/${post.id}`} class="liste__lenke">
+              <span class="liste__tittel">{post.data.tittel}</span>
+              <time class="muted text-sm" datetime={post.data.dato.toISOString()}>{datoFmt(post.data.dato)}</time>
+            </a>
+          </li>
+        ))}
+      </ul>
+      <p><a href="/blogg">Alle innlegg →</a></p>
+    </section>
+  )}
+</BaseLayout>
+
+<style>
+  .hero__kicker {
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: var(--text-sm);
+    color: var(--color-accent);
+    font-weight: var(--weight-medium);
+    margin-bottom: var(--space-xs);
+  }
+  .hero__title { font-size: var(--text-4xl); max-width: 16ch; }
+  .hero__lead { font-size: var(--text-lg); }
+
+  .pilarer {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+    gap: var(--space-md);
+    margin-top: var(--space-md);
+  }
+  .kort {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: var(--space-md);
+  }
+  .kort h3 { font-size: var(--text-lg); }
+  .kort p { margin: 0; }
+
+  .liste { list-style: none; padding: 0; margin: var(--space-md) 0; }
+  .liste__lenke {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: var(--space-md);
+    padding: var(--space-sm) 0;
+    border-bottom: 1px solid var(--color-border);
+    text-decoration: none;
+    color: var(--color-text);
+  }
+  .liste__tittel { font-weight: var(--weight-medium); }
+  .liste__lenke:hover .liste__tittel { color: var(--color-primary); }
+
+  @media (max-width: 34rem) {
+    .hero__title { font-size: var(--text-3xl); }
+  }
+</style>

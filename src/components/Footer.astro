@@ -1,0 +1,27 @@
+---
+const år = new Date().getFullYear();
+---
+
+<footer class="footer">
+  <div class="wrap footer__inner">
+    <p class="muted text-sm">© {år} Finn-Robert Kristensen. Skrevet på norsk, om AI i praksis.</p>
+    <p class="muted text-sm">
+      <a href="/kontakt">Kontakt</a> · Driver <a href="https://intello.no">Intello</a>
+    </p>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    border-top: 1px solid var(--color-border);
+    padding-block: var(--space-lg);
+    margin-top: var(--space-2xl);
+  }
+  .footer__inner {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-xs) var(--space-md);
+    justify-content: space-between;
+  }
+  .footer__inner p { margin: 0; }
+</style>

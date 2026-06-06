@@ -1,0 +1,85 @@
+---
+const nav = [
+  { href: '/', tekst: 'Hjem' },
+  { href: '/blogg', tekst: 'Blogg' },
+  { href: '/om', tekst: 'Om meg' },
+  { href: '/kontakt', tekst: 'Kontakt' },
+];
+const sti = Astro.url.pathname;
+const aktiv = (href: string) => href === '/' ? sti === '/' : sti.startsWith(href);
+---
+
+<header class="header">
+  <div class="wrap header__inner">
+    <a href="/" class="header__brand">Finn&#8209;Robert</a>
+    <nav class="header__nav" aria-label="Hovedmeny">
+      {nav.map((n) => (
+        <a href={n.href} aria-current={aktiv(n.href) ? 'page' : undefined}>{n.tekst}</a>
+      ))}
+      <button id="theme-toggle" class="header__theme" type="button" aria-label="Bytt fargetema">
+        <span aria-hidden="true">◐</span>
+      </button>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .header {
+    border-bottom: 1px solid var(--color-border);
+    background: color-mix(in srgb, var(--color-bg) 88%, transparent);
+    backdrop-filter: blur(8px);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+  .header__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-md);
+    padding-block: var(--space-sm);
+  }
+  .header__brand {
+    font-family: var(--font-heading);
+    font-weight: var(--weight-semibold);
+    font-size: var(--text-lg);
+    color: var(--color-text);
+    text-decoration: none;
+  }
+  .header__nav {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+  }
+  .header__nav a {
+    color: var(--color-text-muted);
+    text-decoration: none;
+    font-size: var(--text-sm);
+  }
+  .header__nav a:hover,
+  .header__nav a[aria-current='page'] { color: var(--color-text); }
+  .header__theme {
+    background: none;
+    border: 1px solid var(--color-border);
+    color: var(--color-text-muted);
+    border-radius: var(--radius-full);
+    width: 2rem;
+    height: 2rem;
+    cursor: pointer;
+    line-height: 1;
+  }
+  .header__theme:hover { color: var(--color-text); }
+</style>
+
+<script>
+  const btn = document.getElementById('theme-toggle');
+  btn?.addEventListener('click', () => {
+    const el = document.documentElement;
+    const now = el.getAttribute('data-theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const current = now ?? (prefersDark ? 'dark' : 'light');
+    const next = current === 'dark' ? 'light' : 'dark';
+    el.setAttribute('data-theme', next);
+    localStorage.setItem('theme', next);
+  });
+</script>

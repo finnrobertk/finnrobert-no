@@ -1,0 +1,46 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const innlegg = (await getCollection('blogg', ({ data }) => !data.utkast))
+  .sort((a, b) => b.data.dato.valueOf() - a.data.dato.valueOf());
+
+const datoFmt = (d: Date) => d.toLocaleDateString('nb-NO', { day: 'numeric', month: 'long', year: 'numeric' });
+---
+
+<BaseLayout tittel="Blogg" beskrivelse="Praktiske tekster om AI, context engineering og agent-bruk — på norsk.">
+  <h1>Blogg</h1>
+  <p class="prose muted" style="font-size: var(--text-lg);">
+    Praktiske tekster om AI, context engineering og hvordan jeg jobber med agenter.
+  </p>
+
+  {innlegg.length === 0 ? (
+    <p class="muted">Første innlegg kommer snart.</p>
+  ) : (
+    <ul class="innleggsliste">
+      {innlegg.map((post) => (
+        <li class="innlegg">
+          <time class="muted text-sm" datetime={post.data.dato.toISOString()}>{datoFmt(post.data.dato)}</time>
+          <h2 class="innlegg__tittel"><a href={`/blogg/${post.id}`}>{post.data.tittel}</a></h2>
+          <p class="muted">{post.data.ingress}</p>
+          {post.data.tags.length > 0 && (
+            <p class="innlegg__tags">{post.data.tags.map((t) => <span class="tag">{t}</span>)}</p>
+          )}
+        </li>
+      ))}
+    </ul>
+  )}
+</BaseLayout>
+
+<style>
+  .innleggsliste { list-style: none; padding: 0; margin-top: var(--space-lg); }
+  .innlegg {
+    padding-block: var(--space-lg);
+    border-top: 1px solid var(--color-border);
+  }
+  .innlegg__tittel { font-size: var(--text-2xl); margin: var(--space-3xs) 0 var(--space-2xs); }
+  .innlegg__tittel a { color: var(--color-text); text-decoration: none; }
+  .innlegg__tittel a:hover { color: var(--color-primary); }
+  .innlegg p { margin-bottom: var(--space-2xs); }
+  .innlegg__tags { display: flex; flex-wrap: wrap; gap: var(--space-3xs); }
+</style>
