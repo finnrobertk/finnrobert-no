@@ -1,13 +1,13 @@
 ---
 tittel: "Hva er context engineering, forklart enkelt"
-ingress: "Forskjellen på en AI som imponerer i en demo og en som holder i reelt arbeid ligger sjelden i modellen — den ligger i konteksten du gir den."
+ingress: "Forskjellen på en KI som imponerer i en demo og en som holder i reelt arbeid ligger sjelden i modellen — den ligger i konteksten du gir den."
 dato: 2026-06-07
-tags: [context-engineering, ai, grunnleggende]
+tags: [context-engineering, ki, grunnleggende]
 pilar: context-engineering
 utkast: false
 ---
 
-De fleste som har prøvd en AI-modell har hatt to opplevelser. Den første: du stiller et spørsmål,
+De fleste som har prøvd en KI-modell har hatt to opplevelser. Den første: du stiller et spørsmål,
 og svaret er forbløffende bra. Den andre: du gir den en ekte oppgave fra jobben din, og svaret er
 selvsikkert, velformulert og helt på siden.
 
@@ -48,7 +48,7 @@ jobber. Det inkluderer spørsmålet ditt, men også:
 - **Historikken** — hva som har blitt sagt og gjort tidligere i oppgaven.
 - **Verktøyene** — hva den faktisk kan slå opp eller utføre selv, i stedet for å gjette.
 
-En moderne AI-modell har et begrenset «arbeidsminne» — den ser bare det du legger foran den i
+En moderne KI-modell har et begrenset «arbeidsminne» — den ser bare det du legger foran den i
 øyeblikket. Den husker ikke organisasjonen din mellom samtaler, og den vet ingenting om det du ikke
 har fortalt den. Context engineering er disiplinen med å fylle det arbeidsminnet med riktig stoff —
 og bare det riktige.
@@ -70,11 +70,11 @@ sortere — slik at det som betyr noe er det som er nærmest.
 
 ## Derfor imponerer demoen, men svikter hverdagen
 
-En AI-demo er nesten alltid satt opp med perfekt kontekst. Oppgaven er ren, dataene er ryddige, og
+En KI-demo er nesten alltid satt opp med perfekt kontekst. Oppgaven er ren, dataene er ryddige, og
 den som lager demoen vet akkurat hva som skal mates inn. Selvsagt ser det imponerende ut.
 
 Ekte arbeid er rotete. Konteksten ligger spredt — litt i et dokument, litt i en e-post, litt i
-hodet på en kollega, litt i et system ingen har dokumentert. Når en AI-satsing skuffer, er det
+hodet på en kollega, litt i et system ingen har dokumentert. Når en KI-satsing skuffer, er det
 sjelden fordi modellen var for svak. Det er nesten alltid fordi den jobbet med mangelfull eller
 rotete kontekst — den fikk «fiks innloggingen» uten resten.
 
@@ -84,7 +84,7 @@ kontekst.
 
 ## Hva dette betyr i praksis
 
-Du trenger ikke være tekniker for å ta dette på alvor. Hvis du eksperimenterer med AI i arbeidet
+Du trenger ikke være tekniker for å ta dette på alvor. Hvis du eksperimenterer med KI i arbeidet
 ditt, er det noen vaner som flytter mer enn de fleste «triks»:
 
 - **Gi den bakgrunnen du selv ville trengt.** Før du forventer et godt svar, spør deg: ville et
@@ -99,17 +99,17 @@ ditt, er det noen vaner som flytter mer enn de fleste «triks»:
   hver gang.
 
 Det siste punktet er der det blir morsomt — og der mye av jobben min ligger om dagen. Det går an å
-sette opp et fast «lager» av kontekst og spesialiserte AI-agenter som allerede kjenner forholdene
+sette opp et fast «lager» av kontekst og spesialiserte KI-agenter som allerede kjenner forholdene
 sine, slik at du slipper å forklare alt på nytt hver gang. Hvordan jeg har gjort det selv, skriver
-jeg om i [Slik har jeg satt opp et personlig AI-lager med agenter](/blogg/2026-06-07-personlig-ai-lager-med-agenter)
+jeg om i [Slik har jeg satt opp et personlig KI-lager med agenter](/blogg/2026-06-07-personlig-ki-lager-med-agenter)
 — og hvordan dette endrer arbeidsmåten min som utvikler, i [Senior utvikler i 2026: slik jobber jeg
-med AI](/blogg/2026-06-07-senior-utvikler-i-2026).
+med KI](/blogg/2026-06-07-senior-utvikler-i-2026).
 
 ## Kort oppsummert
 
 Context engineering høres avansert ut, men handler i bunn om én ting: gi modellen riktig kontekst
 til riktig tid. Ikke mer, ikke mindre.
 
-Modellene blir bedre nesten av seg selv. Det du har kontroll over — og det som faktisk avgjør om AI
+Modellene blir bedre nesten av seg selv. Det du har kontroll over — og det som faktisk avgjør om KI
 holder i reelt arbeid — er konteksten du gir den. Det er ikke magi. Det er håndverk. Og det er
 fullt mulig å bli god til det.

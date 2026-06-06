@@ -1,6 +1,6 @@
 # finnrobert.no
 
-Personlig fag-/bloggside for **Finn-Robert** om AI/KI — context engineering og praktisk agent-bruk,
+Personlig fag-/bloggside for **Finn-Robert** om KI — context engineering og praktisk agent-bruk,
 på norsk. Personlig merkevare, holdt adskilt fra firmaet (intello.no).
 
 > **Hub-notat** med strategi og milepæler ligger i PKA-lageret:
@@ -31,7 +31,7 @@ ute av produksjon. Filnavnet (uten `.md`) blir URL-slug.
 
 ## Innholdsføringer
 Tone: praktisk, ærlig, rolig — «kollega, ikke guru». Norsk. Ingen hype. Se posisjoneringen i
-hub-notatet. Fire pilarer: context-engineering, agent-bruk, senior-til-ai, ki-for-selskaper.
+hub-notatet. Fire pilarer: context-engineering, agent-bruk, senior-til-ki, ki-for-selskaper.
 
 ## Ikke gjort ennå
 - GitHub-remote, Vercel-deploy og DNS-kobling av finnrobert.no.

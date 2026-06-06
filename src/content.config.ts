@@ -10,7 +10,7 @@ const blogg = defineCollection({
     ingress: z.string(),
     dato: z.coerce.date(),
     tags: z.array(z.string()).default([]),
-    // Pilar: context-engineering | agent-bruk | senior-til-ai | ki-for-selskaper
+    // Pilar: context-engineering | agent-bruk | senior-til-ki | ki-for-selskaper
     pilar: z.string().optional(),
     utkast: z.boolean().default(false),
   }),

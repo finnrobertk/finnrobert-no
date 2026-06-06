@@ -8,10 +8,10 @@ const innlegg = (await getCollection('blogg', ({ data }) => !data.utkast))
 const datoFmt = (d: Date) => d.toLocaleDateString('nb-NO', { day: 'numeric', month: 'long', year: 'numeric' });
 ---
 
-<BaseLayout tittel="Blogg" beskrivelse="Praktiske tekster om AI, context engineering og agent-bruk — på norsk.">
+<BaseLayout tittel="Blogg" beskrivelse="Praktiske tekster om KI, context engineering og agent-bruk — på norsk.">
   <h1>Blogg</h1>
   <p class="prose muted" style="font-size: var(--text-lg);">
-    Praktiske tekster om AI, context engineering og hvordan jeg jobber med agenter.
+    Praktiske tekster om KI, context engineering og hvordan jeg jobber med agenter.
   </p>
 
   {innlegg.length === 0 ? (

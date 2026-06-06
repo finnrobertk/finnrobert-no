@@ -1,6 +1,6 @@
 ---
-tittel: "Slik har jeg satt opp et personlig AI-lager med agenter"
-ingress: "Et ekte oppsett: et tekstbasert kunnskapslager der spesialiserte AI-agenter hjelper meg på ulike livsområder — og det jeg har lært om å få dem til å bli faktisk nyttige."
+tittel: "Slik har jeg satt opp et personlig KI-lager med agenter"
+ingress: "Et ekte oppsett: et tekstbasert kunnskapslager der spesialiserte KI-agenter hjelper meg på ulike livsområder — og det jeg har lært om å få dem til å bli faktisk nyttige."
 dato: 2026-06-07
 tags: [agenter, claude-code, oppsett, para, context-engineering]
 pilar: agent-bruk
@@ -12,7 +12,7 @@ dem — ikke et tenkt eksempel, men oppsettet jeg jobber i til daglig. Dette er 
 lærer fortsatt mens jeg bygger. Men det fungerer godt nok til at jeg vil dele det.
 
 Kort fortalt: jeg har et personlig kunnskaps- og assistentlager — et «lager» — der notatene mine
-bor sammen med et knippe AI-agenter som hjelper meg på hvert sitt område. Alt er ren tekst. Og hele
+bor sammen med et knippe KI-agenter som hjelper meg på hvert sitt område. Alt er ren tekst. Og hele
 poenget med strukturen er ikke å holde orden for ordens skyld, men å gi agentene riktig kontekst.
 
 ## Lageret: ren tekst, organisert etter PARA
@@ -28,7 +28,7 @@ PARA-inspirert — en metode for å sortere informasjon etter hvor *aktiv* den e
 - **Arkiv** — ferdig eller inaktivt. Flyttes hit, slettes ikke.
 
 Det fine med ren tekst er at det overlever alt. Ingen leverandør eier det, det er søkbart med
-hvilket som helst verktøy, og — viktigst her — en AI kan lese det direkte uten integrasjoner.
+hvilket som helst verktøy, og — viktigst her — en KI kan lese det direkte uten integrasjoner.
 
 ## Frontmatteren er det som gjør det maskinlesbart
 
@@ -51,7 +51,7 @@ For det første finner jeg ting igjen. Når jeg leter, søker jeg på tvers av b
 innhold — så «vis meg alt jeg har tagget med privatøkonomi fra i vår» blir et reelt søk, ikke en
 manuell graving gjennom mapper.
 
-For det andre, og det er her det blir interessant: **frontmatteren gir AI-en kontekst gratis**. Når
+For det andre, og det er her det blir interessant: **frontmatteren gir KI-en kontekst gratis**. Når
 en agent skal hjelpe meg, vet den allerede hva slags notat dette er, hvilket område det hører til,
 om det er aktivt eller arkivert. Den slipper å gjette. Strukturen jeg lagde for min egen del, viser
 seg å være akkurat det modellen trenger for å gi presise svar. Det er ikke tilfeldig — det er hele
@@ -115,7 +115,7 @@ prompt uten. Jeg går grundigere inn i hvorfor i innlegget om
 Den andre lærdommen er at **smale roller slår brede.** Det føles kontraintuitivt — man vil jo ha en
 assistent som kan alt. Men en agent med ett tydelig ansvar gir bedre svar, er lettere å rute til, og
 er lettere å forbedre, fordi du vet nøyaktig hva den skal være god til. Det er for øvrig samme
-prinsipp jeg lener meg på når jeg jobber med AI som
+prinsipp jeg lener meg på når jeg jobber med KI som
 [senior utvikler](/blogg/2026-06-07-senior-utvikler-i-2026): små, veldefinerte oppgaver med riktig
 kontekst, ikke én stor vag bestilling.
 

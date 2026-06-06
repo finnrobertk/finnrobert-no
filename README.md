@@ -1,6 +1,6 @@
 # finnrobert.no
 
-Personlig blogg og fag-side om AI/KI — context engineering og praktisk agent-bruk, på norsk.
+Personlig blogg og fag-side om KI — context engineering og praktisk agent-bruk, på norsk.
 
 Bygget med [Astro](https://astro.build). Innhold skrives som markdown i `src/content/blogg/`.
 

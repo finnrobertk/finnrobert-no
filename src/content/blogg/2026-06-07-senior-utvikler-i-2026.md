@@ -1,16 +1,16 @@
 ---
-tittel: "Senior utvikler i 2026: slik jobber jeg med AI"
-ingress: "Rollen min har endret seg det siste året — ikke fordi AI tar over, men fordi den flytter tyngdepunktet i hva jeg faktisk bruker tiden på. Her er hva som ble viktigere, hva som ble mindre viktig, og hvordan arbeidsdagen ser ut nå."
+tittel: "Senior utvikler i 2026: slik jobber jeg med KI"
+ingress: "Rollen min har endret seg det siste året — ikke fordi KI tar over, men fordi den flytter tyngdepunktet i hva jeg faktisk bruker tiden på. Her er hva som ble viktigere, hva som ble mindre viktig, og hvordan arbeidsdagen ser ut nå."
 dato: 2026-06-07
-tags: [senior, ai, arbeidsmåte, utvikler]
-pilar: senior-til-ai
+tags: [senior, ki, arbeidsmåte, utvikler]
+pilar: senior-til-ki
 utkast: false
 ---
 
 Jeg har skrevet kode profesjonelt i nærmere tjue år. Det siste året har jobben min endret seg
 mer enn de fem foregående til sammen — men ikke på den måten overskriftene vil ha det til.
 
-AI har ikke gjort meg overflødig, og den har ikke gjort meg «10x». Den har flyttet på hva jeg
+KI har ikke gjort meg overflødig, og den har ikke gjort meg «10x». Den har flyttet på hva jeg
 bruker dagen til. Mindre tid på å skrive ut det jeg allerede vet hvordan ser ut. Mer tid på de
 tingene som er vanskelige å delegere til en modell. Dette innlegget er for deg som er i samme
 pivot: erfaren utvikler som merker at arbeidsmåten er i ferd med å skifte, og som lurer på hva
@@ -86,7 +86,7 @@ jeg i førersetet.
 Den andre store endringen er at jeg har bygget opp kontekst som varer. Jeg har et personlig
 oppsett der prosjektnotater, beslutninger og arbeidsmåter ligger strukturert, slik at agentene
 mine starter med å vite ting i stedet for å gjette. Det har jeg beskrevet i
-[Slik har jeg satt opp et personlig AI-lager med agenter](/blogg/2026-06-07-personlig-ai-lager-med-agenter).
+[Slik har jeg satt opp et personlig KI-lager med agenter](/blogg/2026-06-07-personlig-ki-lager-med-agenter).
 Poenget her er bare: tiden jeg før brukte på å skrive kode, bruker jeg nå delvis på å bygge og
 vedlikeholde *konteksten* som gjør at koden blir riktig. Det er en reell forskyvning i hva
 arbeidet består av.
@@ -115,7 +115,7 @@ mindre. Men den brukes annerledes.
 Den sitter ikke lenger primært i å produsere kode raskt. Den sitter i å vite hva som er verdt å
 bygge, å sette de riktige grensene, å gi en agent akkurat den konteksten den trenger, og å være
 den som faktisk verifiserer at resultatet holder. Det er senior-arbeid. Det har det alltid vært —
-AI har bare skrelt bort en del av det rundt det, og latt kjernen stå tydeligere fram.
+KI har bare skrelt bort en del av det rundt det, og latt kjernen stå tydeligere fram.
 
-Så nei, jeg tror ikke AI tar jobben din. Men jeg tror den endrer hvilken del av jobben som er
+Så nei, jeg tror ikke KI tar jobben din. Men jeg tror den endrer hvilken del av jobben som er
 *jobben*. Og for oss som har gått veien, er det ganske gode nyheter.
