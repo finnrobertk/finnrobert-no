@@ -33,6 +33,14 @@ ute av produksjon. Filnavnet (uten `.md`) blir URL-slug.
 Tone: praktisk, ærlig, rolig — «kollega, ikke guru». Norsk. Ingen hype. Se posisjoneringen i
 hub-notatet. Fire pilarer: context-engineering, agent-bruk, senior-til-ki, ki-for-selskaper.
 
+## Deploy
+- **Live:** <https://finnrobert-no.vercel.app> (Vercel, prosjekt `finnrobert-no`).
+- **GitHub:** <https://github.com/finnrobertk/finnrobert-no> — koblet til Vercel, så `git push` til
+  `main` auto-deployer til produksjon. `vercel --prod` for manuell deploy.
+- **Domene:** `finnrobert.no` + `www` er lagt til i Vercel-prosjektet. DNS settes hos **Domeneshop**
+  (A `@`→`76.76.21.21`, CNAME `www`→`cname.vercel-dns.com`). Nameserverne blir hos Domeneshop —
+  ikke flyttet til Vercel — for å beholde DNS-kontroll til kommende Fastmail-e-post (MX).
+
 ## Ikke gjort ennå
-- GitHub-remote, Vercel-deploy og DNS-kobling av finnrobert.no.
+- DNS-pek hos Domeneshop (over) — så `finnrobert.no` blir live med SSL.
 - Endelig kontakt-e-post (venter på Fastmail — se `src/pages/kontakt.astro`).
