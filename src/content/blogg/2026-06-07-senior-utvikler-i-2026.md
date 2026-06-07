@@ -86,7 +86,7 @@ jeg i førersetet.
 Den andre store endringen er at jeg har bygget opp kontekst som varer. Jeg har et personlig
 oppsett der prosjektnotater, beslutninger og arbeidsmåter ligger strukturert, slik at agentene
 mine starter med å vite ting i stedet for å gjette. Det har jeg beskrevet i
-[Slik har jeg satt opp et personlig KI-lager med agenter](/blogg/2026-06-07-personlig-ki-lager-med-agenter).
+[Slik har jeg satt opp en personlig KI-kunnskapsbase med agenter](/blogg/2026-06-07-personlig-ki-kunnskapsbase-med-agenter).
 Poenget her er bare: tiden jeg før brukte på å skrive kode, bruker jeg nå delvis på å bygge og
 vedlikeholde *konteksten* som gjør at koden blir riktig. Det er en reell forskyvning i hva
 arbeidet består av.

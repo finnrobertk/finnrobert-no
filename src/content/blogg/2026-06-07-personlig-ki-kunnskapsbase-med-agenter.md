@@ -1,6 +1,6 @@
 ---
-tittel: "Slik har jeg satt opp et personlig KI-lager med agenter"
-ingress: "Et ekte oppsett: et tekstbasert kunnskapslager der spesialiserte KI-agenter hjelper meg på ulike livsområder — og det jeg har lært om å få dem til å bli faktisk nyttige."
+tittel: "Slik har jeg satt opp en personlig KI-kunnskapsbase med agenter"
+ingress: "Et ekte oppsett: en tekstbasert kunnskapsbase der spesialiserte KI-agenter hjelper meg på ulike livsområder — og det jeg har lært om å få dem til å bli faktisk nyttige."
 dato: 2026-06-07
 tags: [agenter, claude-code, oppsett, para, context-engineering]
 pilar: agent-bruk
@@ -11,11 +11,11 @@ Jeg snakker mye om agenter. Så jeg synes det er rimelig at jeg viser hvordan je
 dem — ikke et tenkt eksempel, men oppsettet jeg jobber i til daglig. Dette er ikke ferdig, og jeg
 lærer fortsatt mens jeg bygger. Men det fungerer godt nok til at jeg vil dele det.
 
-Kort fortalt: jeg har et personlig kunnskaps- og assistentlager — et «lager» — der notatene mine
+Kort fortalt: jeg har en personlig kunnskapsbase der notatene mine
 bor sammen med et knippe KI-agenter som hjelper meg på hvert sitt område. Alt er ren tekst. Og hele
 poenget med strukturen er ikke å holde orden for ordens skyld, men å gi agentene riktig kontekst.
 
-## Lageret: ren tekst, organisert etter PARA
+## Kunnskapsbasen: ren tekst, organisert etter PARA
 
 Grunnmuren er kjedelig, og det er med vilje. Det er en mappe med markdown-filer, organisert
 PARA-inspirert — en metode for å sortere informasjon etter hvor *aktiv* den er, ikke etter tema:
@@ -76,9 +76,9 @@ gjøre. Grensene er ikke pynt. De er det som gjør at jeg kan rute en forespørs
 stole på at den holder seg i sitt spor. To agenter som overlapper, er to agenter jeg må velge
 mellom hver gang, og som begge svarer litt utenfor sin kjerne.
 
-Verktøyet jeg kjører alt dette i, er Claude Code, startet fra rota av lageret. Det betyr at
-agentene har hele lageret som arbeidskatalog — de kan lese notatene mine, søke i dem og skrive nye
-filer der de hører hjemme.
+Verktøyet jeg kjører alt dette i, er Claude Code, startet fra rota av kunnskapsbasen. Det betyr at
+agentene har hele kunnskapsbasen som arbeidsområde — de kan lese notatene mine, søke i dem og skrive
+nye filer der de hører hjemme.
 
 ## Personalsjefen som ansetter nye agenter
 
@@ -106,8 +106,8 @@ Hvis jeg skal koke det ned til én ting: **agentene ble nyttige da konteksten bl
 promptene ble smarte.**
 
 Jeg brukte for lang tid på å finpusse formuleringer i systemprompter, i troen på at den perfekte
-instruksen var det som skilte en god agent fra en dårlig. Den virkelige forskjellen kom da lageret
-ble ryddig og frontmatteren konsekvent. Da fikk agentene noe konkret å jobbe med: mine faktiske
+instruksen var det som skilte en god agent fra en dårlig. Den virkelige forskjellen kom da
+kunnskapsbasen ble ryddig og frontmatteren konsekvent. Da fikk agentene noe konkret å jobbe med: mine faktiske
 notater, riktig merket, lett å finne. En middelmådig prompt med god kontekst slår en glimrende
 prompt uten. Jeg går grundigere inn i hvorfor i innlegget om
 [context engineering](/blogg/2026-06-07-hva-er-context-engineering).

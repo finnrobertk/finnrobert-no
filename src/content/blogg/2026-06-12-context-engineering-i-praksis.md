@@ -42,11 +42,11 @@ hver eneste samtale, er *stående*: ting som er sant uansett hva jeg spør om.
 
 Det legger jeg i en instruksfil. I Claude Code heter den `CLAUDE.md`, og den leses automatisk når
 verktøyet starter. Der ligger ting som hvordan prosjektet er bygd opp, hvilke konvensjoner jeg
-følger, og — minst like viktig — hva som er *utenfor*. Et lite utdrag fra mitt eget lager:
+følger, og — minst like viktig — hva som er *utenfor*. Et lite utdrag fra min egen kunnskapsbase:
 
 ```markdown
 ## Grenser (viktig)
-- Ekte kodeprosjekter er egne repoer med egen historikk. Dette lageret
+- Ekte kodeprosjekter er egne repoer med egen historikk. Denne kunnskapsbasen
   holder hub-notatet for hvert prosjekt og peker til kode-repoet.
 - Privat økonomi ≠ firma-regnskap. Aldri bland de to.
 ```
@@ -55,11 +55,11 @@ Poenget er ikke filformatet. Poenget er at jeg slipper å forklare det samme på
 modellen aldri starter blank på det som er konstant. Det er stående kontekst — skrevet én gang,
 lest hver gang.
 
-Den samme tankegangen gjelder metadata. I lageret mitt starter hver notatfil med en liten
+Den samme tankegangen gjelder metadata. I kunnskapsbasen min starter hver notatfil med en liten
 YAML-blokk på toppen: type, område, status, tags. Det er kontekst maskinen kan lese uten å gjette —
 en agent vet med en gang at *dette* er et aktivt prosjektnotat innen privatøkonomi, ikke et arkivert
 ressursnotat. Jeg skrev mer om det oppsettet i
-[Slik har jeg satt opp et personlig KI-lager med agenter](/blogg/2026-06-07-personlig-ki-lager-med-agenter).
+[Slik har jeg satt opp en personlig KI-kunnskapsbase med agenter](/blogg/2026-06-07-personlig-ki-kunnskapsbase-med-agenter).
 
 ## Skarpt avgrensede roller framfor én alt-mulig-agent
 
@@ -76,7 +76,7 @@ merkevaren, inntektsstrategi, firmaøkonomi. Det er ikke begrensninger for begre
 er hva som holder konteksten hennes ren og fokusert, slik at svarene treffer. Grensene *er*
 context engineering — de bestemmer hva som er innenfor og utenfor synsfeltet. Jeg gikk grundigere
 inn i den rolledelingen i
-[innlegget om KI-lageret](/blogg/2026-06-07-personlig-ki-lager-med-agenter).
+[innlegget om KI-kunnskapsbasen](/blogg/2026-06-07-personlig-ki-kunnskapsbase-med-agenter).
 
 ## Når man bør starte med blanke ark
 
