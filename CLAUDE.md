@@ -34,7 +34,7 @@ Tone: praktisk, ærlig, rolig — «kollega, ikke guru». Norsk. Ingen hype. Se 
 hub-notatet. Fire pilarer: context-engineering, agent-bruk, senior-til-ki, ki-for-selskaper.
 
 ## Deploy
-- **Live:** <https://finnrobert-no.vercel.app> (Vercel, prosjekt `finnrobert-no`).
+- **Live:** <https://finnrobert.no> (HTTPS) — også <https://finnrobert-no.vercel.app> (Vercel, prosjekt `finnrobert-no`).
 - **GitHub:** <https://github.com/finnrobertk/finnrobert-no> — koblet til Vercel, så `git push` til
   `main` auto-deployer til produksjon. `vercel --prod` for manuell deploy.
 - **Domene:** `finnrobert.no` + `www` er lagt til i Vercel-prosjektet. DNS settes hos **Domeneshop**
@@ -42,5 +42,4 @@ hub-notatet. Fire pilarer: context-engineering, agent-bruk, senior-til-ki, ki-fo
   ikke flyttet til Vercel — for å beholde DNS-kontroll til kommende Fastmail-e-post (MX).
 
 ## Ikke gjort ennå
-- DNS-pek hos Domeneshop (over) — så `finnrobert.no` blir live med SSL.
 - Endelig kontakt-e-post (venter på Fastmail — se `src/pages/kontakt.astro`).
