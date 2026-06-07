@@ -21,5 +21,49 @@ const datoFmt = (d: Date) => d.toLocaleDateString('nb-NO', { day: 'numeric', mon
       <p class="muted" style="font-size: var(--text-lg);">{post.data.ingress}</p>
     </header>
     <Content />
+
+    <aside class="retur-cta" aria-label="Om Intello">
+      <p class="retur-cta__tekst">
+        Jobber du med dette i praksis? <strong>Intello</strong> hjelper selskaper med arkitektur, sky og KI.
+      </p>
+      <a class="retur-cta__lenke" href="https://intello.no" rel="noopener">
+        intello.no →
+      </a>
+    </aside>
   </article>
 </BaseLayout>
+
+<style>
+  /* Lavmælt retur-CTA til søsken-merket Intello. Diskret, ikke påtrengende. */
+  .retur-cta {
+    margin-top: var(--space-2xl);
+    padding: var(--space-md);
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-left: 3px solid var(--color-primary);
+    border-radius: var(--radius-md);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--space-2xs) var(--space-md);
+  }
+  .retur-cta__tekst {
+    margin: 0;
+    color: var(--color-text-muted);
+    font-size: var(--text-sm);
+    max-width: 52ch;
+  }
+  .retur-cta__lenke {
+    flex: none;
+    color: var(--color-primary);
+    font-weight: var(--weight-medium);
+    font-size: var(--text-sm);
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  .retur-cta__lenke:hover {
+    color: var(--color-primary-strong);
+    text-decoration: underline;
+  }
+</style>
