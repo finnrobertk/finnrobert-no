@@ -10,6 +10,10 @@ export async function getStaticPaths() {
 const { post } = Astro.props;
 const { Content } = await render(post);
 const datoFmt = (d: Date) => d.toLocaleDateString('nb-NO', { day: 'numeric', month: 'long', year: 'numeric' });
+
+// Absolutt kanonisk URL til innlegget — samme verdi brukes til både LinkedIn-deling og kopier-knapp.
+const innleggUrl = new URL(`/blogg/${post.id}`, Astro.site).href;
+const linkedInUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(innleggUrl)}`;
 ---
 
 <BaseLayout tittel={post.data.tittel} beskrivelse={post.data.ingress}>
@@ -22,6 +26,25 @@ const datoFmt = (d: Date) => d.toLocaleDateString('nb-NO', { day: 'numeric', mon
     </header>
     <Content />
 
+    <div class="del-rad" data-innlegg-url={innleggUrl}>
+      <span class="del-rad__tekst">Likte du dette? Del det:</span>
+      <a
+        class="del-rad__lenke"
+        href={linkedInUrl}
+        target="_blank"
+        rel="noopener"
+      >
+        <svg class="del-rad__ikon" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false">
+          <path fill="currentColor" d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.22.79 24 1.77 24h20.45c.98 0 1.78-.78 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/>
+        </svg>
+        Del på LinkedIn
+      </a>
+      <button class="del-rad__lenke del-rad__kopier" type="button">
+        Kopier lenke
+      </button>
+      <span class="del-rad__status" role="status" aria-live="polite"></span>
+    </div>
+
     <aside class="retur-cta" aria-label="Om Intello">
       <p class="retur-cta__tekst">
         Jobber du med dette i praksis? <strong>Intello</strong> hjelper selskaper med arkitektur, sky og KI.
@@ -33,7 +56,77 @@ const datoFmt = (d: Date) => d.toLocaleDateString('nb-NO', { day: 'numeric', mon
   </article>
 </BaseLayout>
 
+<script>
+  // Kopier-lenke: skriver absolutt innleggs-URL til utklippstavlen med kort tilbakemelding.
+  const rad = document.querySelector<HTMLElement>('.del-rad');
+  const knapp = rad?.querySelector<HTMLButtonElement>('.del-rad__kopier');
+  const status = rad?.querySelector<HTMLElement>('.del-rad__status');
+  const url = rad?.dataset.innleggUrl ?? '';
+
+  let tilbakestill: ReturnType<typeof setTimeout> | undefined;
+
+  knapp?.addEventListener('click', async () => {
+    try {
+      await navigator.clipboard.writeText(url);
+      if (status) status.textContent = 'Kopiert!';
+    } catch {
+      if (status) status.textContent = 'Kunne ikke kopiere';
+    }
+    clearTimeout(tilbakestill);
+    tilbakestill = setTimeout(() => {
+      if (status) status.textContent = '';
+    }, 2000);
+  });
+</script>
+
 <style>
+  /* Diskret del-rad nederst i innlegget — matcher retur-CTA-ens lavmælte uttrykk. */
+  .del-rad {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-2xs) var(--space-md);
+    margin-top: var(--space-2xl);
+    color: var(--color-text-muted);
+    font-size: var(--text-sm);
+  }
+  .del-rad__tekst {
+    color: var(--color-text-muted);
+  }
+  .del-rad__lenke {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-3xs, 0.25rem);
+    color: var(--color-primary);
+    font-weight: var(--weight-medium);
+    font-size: var(--text-sm);
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  .del-rad__lenke:hover {
+    color: var(--color-primary-strong);
+    text-decoration: underline;
+  }
+  .del-rad__kopier {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    font: inherit;
+  }
+  .del-rad__lenke:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+    border-radius: var(--radius-sm, 4px);
+  }
+  .del-rad__ikon {
+    flex: none;
+  }
+  .del-rad__status {
+    color: var(--color-text-muted);
+    font-size: var(--text-sm);
+  }
+
   /* Lavmælt retur-CTA til søsken-merket Intello. Diskret, ikke påtrengende. */
   .retur-cta {
     margin-top: var(--space-2xl);
