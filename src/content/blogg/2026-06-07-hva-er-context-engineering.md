@@ -1,7 +1,7 @@
 ---
 tittel: "Hva er context engineering, forklart enkelt"
 ingress: "Forskjellen på en KI som imponerer i en demo og en som holder i reelt arbeid ligger sjelden i modellen — den ligger i konteksten du gir den."
-dato: 2026-06-07
+dato: 2026-06-23
 tags: [context-engineering, ki, grunnleggende]
 pilar: context-engineering
 utkast: false

@@ -1,7 +1,7 @@
 ---
 tittel: "Velkommen — hva denne bloggen handler om"
 ingress: "Hvorfor jeg starter en personlig blogg om KI på norsk, og hva du kan forvente her."
-dato: 2026-06-07
+dato: 2026-06-18
 tags: [meta, ki]
 pilar: ki-for-selskaper
 utkast: false

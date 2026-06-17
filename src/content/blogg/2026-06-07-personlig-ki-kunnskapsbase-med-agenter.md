@@ -1,7 +1,7 @@
 ---
 tittel: "Slik har jeg satt opp en personlig KI-kunnskapsbase med agenter"
 ingress: "Et ekte oppsett: en tekstbasert kunnskapsbase der spesialiserte KI-agenter hjelper meg på ulike livsområder — og det jeg har lært om å få dem til å bli faktisk nyttige."
-dato: 2026-06-07
+dato: 2026-06-22
 tags: [agenter, claude-code, oppsett, para, context-engineering]
 pilar: agent-bruk
 utkast: false

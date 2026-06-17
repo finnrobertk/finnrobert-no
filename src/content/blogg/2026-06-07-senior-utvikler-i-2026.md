@@ -1,7 +1,7 @@
 ---
 tittel: "Senior utvikler i 2026: slik jobber jeg med KI"
 ingress: "Rollen min har endret seg det siste året — ikke fordi KI tar over, men fordi den flytter tyngdepunktet i hva jeg faktisk bruker tiden på. Her er hva som ble viktigere, hva som ble mindre viktig, og hvordan arbeidsdagen ser ut nå."
-dato: 2026-06-07
+dato: 2026-06-19
 tags: [senior, ki, arbeidsmåte, utvikler]
 pilar: senior-til-ki
 utkast: false
