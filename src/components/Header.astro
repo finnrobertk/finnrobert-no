@@ -11,7 +11,7 @@ const aktiv = (href: string) => href === '/' ? sti === '/' : sti.startsWith(href
 
 <header class="header">
   <div class="wrap header__inner">
-    <a href="/" class="header__brand">Finn&#8209;Robert</a>
+    <a href="/" class="header__brand">Finn&#8209;Robert Kristensen</a>
     <nav class="header__nav" aria-label="Hovedmeny">
       {nav.map((n) => (
         <a href={n.href} aria-current={aktiv(n.href) ? 'page' : undefined}>{n.tekst}</a>
