@@ -55,7 +55,7 @@ feil ting godt.
 som leverer noe brukbart og en som roter, er nesten alltid hva den fikk vite — ikke hvor «smart»
 modellen er. Å formulere problemet presist, peke på de riktige filene, si hva som er fast og hva
 som er fritt, beskrive grensene den ikke skal trå over: det er en egen disiplin. Jeg har skrevet
-mer om den i [Hva er context engineering, forklart enkelt](/blogg/2026-06-07-hva-er-context-engineering),
+mer om den i [Hva er context engineering, forklart enkelt](/blogg/hva-er-context-engineering),
 fordi det fortjener sitt eget innlegg.
 
 **Å verifisere.** Tilliten flytter seg. Før stolte jeg implisitt på koden jeg selv skrev, fordi
@@ -86,7 +86,7 @@ jeg i førersetet.
 Den andre store endringen er at jeg har bygget opp kontekst som varer. Jeg har et personlig
 oppsett der prosjektnotater, beslutninger og arbeidsmåter ligger strukturert, slik at agentene
 mine starter med å vite ting i stedet for å gjette. Det har jeg beskrevet i
-[Slik har jeg satt opp en personlig KI-kunnskapsbase med agenter](/blogg/2026-06-07-personlig-ki-kunnskapsbase-med-agenter).
+[Slik har jeg satt opp en personlig KI-kunnskapsbase med agenter](/blogg/personlig-ki-kunnskapsbase-med-agenter).
 Poenget her er bare: tiden jeg før brukte på å skrive kode, bruker jeg nå delvis på å bygge og
 vedlikeholde *konteksten* som gjør at koden blir riktig. Det er en reell forskyvning i hva
 arbeidet består av.

@@ -55,7 +55,7 @@ For det andre, og det er her det blir interessant: **frontmatteren gir KI-en kon
 en agent skal hjelpe meg, vet den allerede hva slags notat dette er, hvilket område det hører til,
 om det er aktivt eller arkivert. Den slipper å gjette. Strukturen jeg lagde for min egen del, viser
 seg å være akkurat det modellen trenger for å gi presise svar. Det er ikke tilfeldig — det er hele
-[context engineering](/blogg/2026-06-07-hva-er-context-engineering) i miniatyr.
+[context engineering](/blogg/hva-er-context-engineering) i miniatyr.
 
 ## Agentene: skarpe roller, ikke én alt-mulig-assistent
 
@@ -112,13 +112,13 @@ lest meg til. Den virkelige forskjellen kom da
 kunnskapsbasen ble ryddig og frontmatteren konsekvent. Da fikk agentene noe konkret å jobbe med: mine faktiske
 notater, riktig merket, lett å finne. En middelmådig prompt med god kontekst slår en glimrende
 prompt uten. Jeg går grundigere inn i hvorfor i innlegget om
-[context engineering](/blogg/2026-06-07-hva-er-context-engineering).
+[context engineering](/blogg/hva-er-context-engineering).
 
 Den andre lærdommen er at **smale roller slår brede.** Det føles kontraintuitivt — man vil jo ha en
 assistent som kan alt. Men en agent med ett tydelig ansvar gir bedre svar, er lettere å rute til, og
 er lettere å forbedre, fordi du vet nøyaktig hva den skal være god til. Det er for øvrig samme
 prinsipp jeg lener meg på når jeg jobber med KI som
-[senior utvikler](/blogg/2026-06-07-senior-utvikler-i-2026): små, veldefinerte oppgaver med riktig
+[senior utvikler](/blogg/senior-utvikler-i-2026): små, veldefinerte oppgaver med riktig
 kontekst, ikke én stor vag bestilling.
 
 ## Hva jeg fortsatt ikke har løst

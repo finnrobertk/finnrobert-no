@@ -7,7 +7,7 @@ pilar: context-engineering
 utkast: true
 ---
 
-I [Hva er context engineering, forklart enkelt](/blogg/2026-06-07-hva-er-context-engineering)
+I [Hva er context engineering, forklart enkelt](/blogg/hva-er-context-engineering)
 forklarte jeg *hva* det er og *hvorfor* det avgjør om en KI-modell (kunstig intelligens) holder i
 reelt arbeid. Kort sagt: forskjellen ligger sjelden i modellen, men i konteksten du gir den.
 
@@ -59,7 +59,7 @@ Den samme tankegangen gjelder metadata. I kunnskapsbasen min starter hver notatf
 YAML-blokk på toppen: type, område, status, tags. Det er kontekst maskinen kan lese uten å gjette —
 en agent vet med en gang at *dette* er et aktivt prosjektnotat innen privatøkonomi, ikke et arkivert
 ressursnotat. Jeg skrev mer om det oppsettet i
-[Slik har jeg satt opp en personlig KI-kunnskapsbase med agenter](/blogg/2026-06-07-personlig-ki-kunnskapsbase-med-agenter).
+[Slik har jeg satt opp en personlig KI-kunnskapsbase med agenter](/blogg/personlig-ki-kunnskapsbase-med-agenter).
 
 ## Skarpt avgrensede roller framfor én alt-mulig-agent
 
@@ -76,7 +76,7 @@ merkevaren, inntektsstrategi, firmaøkonomi. Det er ikke begrensninger for begre
 er hva som holder konteksten hennes ren og fokusert, slik at svarene treffer. Grensene *er*
 context engineering — de bestemmer hva som er innenfor og utenfor synsfeltet. Jeg gikk grundigere
 inn i den rolledelingen i
-[innlegget om KI-kunnskapsbasen](/blogg/2026-06-07-personlig-ki-kunnskapsbase-med-agenter).
+[innlegget om KI-kunnskapsbasen](/blogg/personlig-ki-kunnskapsbase-med-agenter).
 
 ## Når man bør starte med blanke ark
 

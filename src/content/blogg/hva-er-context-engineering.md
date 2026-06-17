@@ -101,9 +101,9 @@ ditt, er det noen vaner som flytter mer enn de fleste «triks»:
 Det siste punktet er der det blir morsomt — og der mye av jobben min ligger om dagen. Det går an å
 sette opp et fast KI-oppsett med kontekst og spesialiserte agenter som allerede kjenner forholdene
 sine, slik at du slipper å forklare alt på nytt hver gang. Hvordan jeg har gjort det selv, skriver
-jeg om i [Slik har jeg satt opp en personlig KI-kunnskapsbase med agenter](/blogg/2026-06-07-personlig-ki-kunnskapsbase-med-agenter)
+jeg om i [Slik har jeg satt opp en personlig KI-kunnskapsbase med agenter](/blogg/personlig-ki-kunnskapsbase-med-agenter)
 — og hvordan dette endrer arbeidsmåten min som utvikler, i [Senior utvikler i 2026: slik jobber jeg
-med KI](/blogg/2026-06-07-senior-utvikler-i-2026).
+med KI](/blogg/senior-utvikler-i-2026).
 
 ## Kort oppsummert
 

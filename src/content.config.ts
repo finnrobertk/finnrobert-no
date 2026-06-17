@@ -2,7 +2,9 @@ import { defineCollection, z } from 'astro:content';
 import { glob } from 'astro/loaders';
 
 // Blogginnlegg skrives som markdown i src/content/blogg/.
-// Filnavn (uten .md) blir slug, f.eks. 2026-06-07-velkommen -> /blogg/2026-06-07-velkommen
+// Filnavn (uten .md) blir slug, f.eks. velkommen -> /blogg/velkommen
+// Dateløse slugs med vilje: URL-en kobles ikke til dato, så `dato` (under) kan endres
+// uten at permalenken blir stale. Publiseringsdato styres av frontmatter-feltet `dato`.
 const blogg = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './src/content/blogg' }),
   schema: z.object({
