@@ -91,11 +91,12 @@ roter til selv: at roller ikke overlapper. Når personalsjefen vurderer en ny ag
 de eksisterende og spør om dette egentlig er en ny rolle, eller om det hører hjemme hos noen som
 allerede finnes. Slik holder rutingen seg presis etter hvert som flokken vokser.
 
-Et konkret eksempel, som passer her: **dette innlegget er skrevet av en slik ansatt agent.** Jeg
-trengte en fast fag-skribent for bloggen, så personalsjefen skrev mandatet hennes — tone, grenser,
-hvilke kilder hun skal lese før hun skriver, og hva hun *ikke* skal røre (den visuelle merkevaren,
-inntektsstrategi, firmaøkonomi). Det er hun som har ført pennen her. Jeg sa hva innlegget skulle
-handle om; resten er hennes mandat i praksis.
+Et konkret eksempel, som passer her: **utkastet til dette innlegget er skrevet av en slik ansatt
+agent.** Jeg trengte en fast fag-skribent for bloggen, så personalsjefen skrev mandatet hennes —
+tone, grenser, hvilke kilder hun skal lese før hun skriver, og hva hun *ikke* skal røre (den
+visuelle merkevaren, inntektsstrategi, firmaøkonomi). Tankene, valgene og lærdommene her er mine —
+det er mitt oppsett, og jeg har levd feilene jeg beskriver. Det hun gjør, er å føre dem i pennen
+innenfor rammene jeg har satt: mandatet jeg lot personalsjefen designe for henne.
 
 Jeg legger ikke skjul på at det er et litt selvrefererende oppsett. Men det er også det ærligste
 eksemplet jeg kan gi på at det fungerer.
@@ -106,7 +107,8 @@ Hvis jeg skal koke det ned til én ting: **agentene ble nyttige da konteksten bl
 promptene ble smarte.**
 
 Jeg brukte for lang tid på å finpusse formuleringer i systemprompter, i troen på at den perfekte
-instruksen var det som skilte en god agent fra en dårlig. Den virkelige forskjellen kom da
+instruksen var det som skilte en god agent fra en dårlig — en feil jeg gjorde selv, ikke en jeg har
+lest meg til. Den virkelige forskjellen kom da
 kunnskapsbasen ble ryddig og frontmatteren konsekvent. Da fikk agentene noe konkret å jobbe med: mine faktiske
 notater, riktig merket, lett å finne. En middelmådig prompt med god kontekst slår en glimrende
 prompt uten. Jeg går grundigere inn i hvorfor i innlegget om
