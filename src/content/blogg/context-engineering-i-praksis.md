@@ -1,10 +1,10 @@
 ---
 tittel: "Context engineering i praksis: grepene jeg faktisk bruker"
 ingress: "Introen forklarte hva context engineering er og hvorfor det avgjør. Her er det konkrete håndverket — hvordan jeg trimmer, strukturer og verifiserer kontekst i hverdagen, inkludert det jeg fortsatt ikke har funnet ut av."
-dato: 2026-06-12
+dato: 2026-07-02
 tags: [context-engineering, ki, claude-code, oppsett]
 pilar: context-engineering
-utkast: true
+utkast: false
 ---
 
 I [Hva er context engineering, forklart enkelt](/blogg/hva-er-context-engineering)
@@ -54,6 +54,11 @@ følger, og — minst like viktig — hva som er *utenfor*. Et lite utdrag fra m
 Poenget er ikke filformatet. Poenget er at jeg slipper å forklare det samme på nytt hver gang, og at
 modellen aldri starter blank på det som er konstant. Det er stående kontekst — skrevet én gang,
 lest hver gang.
+
+Akkurat denne fila fortjener et eget dypdykk — hva som bør stå i en `CLAUDE.md`, hva som *ikke* bør,
+og fellene jeg selv har gått i. Det kommer i et eget innlegg snart.
+<!-- TODO 14.07: gjør «et eget innlegg» til lenke → /blogg/claude-md-staaende-kontekst når dypdykket er live -->
+
 
 Den samme tankegangen gjelder metadata. I kunnskapsbasen min starter hver notatfil med en liten
 YAML-blokk på toppen: type, område, status, tags. Det er kontekst maskinen kan lese uten å gjette —
