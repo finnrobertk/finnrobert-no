@@ -17,10 +17,10 @@ prosjektet, som verktøyet leser automatisk hver gang det starter. Alt du skrive
 fra første sekund — uten at du må si det. Det er det jeg mener med *stående kontekst*: skrevet én
 gang, lest hver gang.
 
-Jeg nevnte fila kort i [Context engineering i praksis](/blogg/context-engineering-i-praksis). Dette
+Jeg nevnte filen kort i [Context engineering i praksis](/blogg/context-engineering-i-praksis). Dette
 innlegget går rett på den: hva den faktisk er, hvorfor den virker, og hvordan du skriver en god en.
 
-## Hva fila faktisk er
+## Hva filen faktisk er
 
 Ikke noe mystisk. En tekstfil, `CLAUDE.md`, vanligvis i roten av repoet. Claude Code leser den
 automatisk inn i konteksten ved oppstart, så innholdet er en del av det modellen «vet» når den
@@ -97,11 +97,11 @@ der, koster oppmerksomhet i hver økt. Det er ikke et lager for alt du vet om pr
 
 - **Engangsinfo.** Detaljer som hører til én oppgave, ikke til prosjektet som helhet. Det gir du i
   selve prompten, der og da.
-- **Ting som endrer seg ofte.** Sprint-mål, midlertidige TODO-er, hvem som jobber med hva denne uka.
+- **Ting som endrer seg ofte.** Sprint-mål, midlertidige TODO-er, hvem som jobber med hva denne uken.
   Det blir utdatert raskt og forurenser konteksten (mer om den fellen under).
 - **Hele dokumenter limt inn.** Lenk til arkitekturdokumentet eller API-spesifikasjonen i stedet for
   å kopiere det inn. En `CLAUDE.md` på flere hundre linjer drukner det viktige.
-- **Hemmeligheter.** Aldri nøkler, passord eller tokens. Fila committes til git og leses av et KI-verktøy
+- **Hemmeligheter.** Aldri nøkler, passord eller tokens. Filen committes til git og leses av et KI-verktøy
   — behandle den som offentlig kildekode.
 
 Tommelen: hører dette hjemme i *enhver* økt i prosjektet? Da inn. Gjelder det bare av og til, eller
@@ -109,19 +109,19 @@ bare nå? Da ut.
 
 ## To feller jeg har gått i
 
-**For lang fil.** Den vanligste. Det føles produktivt å dokumentere alt, og fila vokser umerkelig
+**For lang fil.** Den vanligste. Det føles produktivt å dokumentere alt, og filen vokser umerkelig
 til en vegg av tekst. Problemet er at det undergraver seg selv: når alt er «viktig», er ingenting
 det, og modellen mister det som faktisk teller i støyen. En `CLAUDE.md` skal være kortfattet og
 skarp. Hvis den blir lang, er det som regel et tegn på at noe burde vært lenket til, ikke limt inn.
 Jeg behandler den som noe som skal *trimmes* med jevne mellomrom, ikke bare fylles på.
 
 **Utdatert innhold.** Den lumskeste. En `CLAUDE.md` som sier feil ting er verre enn ingen fil, fordi
-modellen stoler på den. Skifter dere test-kommando uten å oppdatere fila, sender du modellen
+modellen stoler på den. Skifter dere test-kommando uten å oppdatere filen, sender du modellen
 selvsikkert i feil retning — hver gang, helt til noen fanger det opp. Stående kontekst som har blitt
 løgn, er aktivt skadelig. Så når noe konstant endrer seg i prosjektet, hører `CLAUDE.md` med i samme
 oppdatering — på linje med å oppdatere README.
 
-Begge fellene har samme rot: fila er stående kontekst, ikke et notatfelt. Den fortjener samme stell
+Begge fellene har samme rot: filen er stående kontekst, ikke et notatfelt. Den fortjener samme stell
 som koden den ligger ved siden av.
 
 ## Slik kommer du i gang
@@ -131,7 +131,7 @@ kommandoene du bruker mest, og den ene tingen du er lei av å forklare på nytt.
 verdi fra dag én.
 
 Resten vokser organisk. Hver gang du tar deg selv i å gjenforklare noe til modellen — eller å
-korrigere den på noe den burde visst — er det en kandidat til fila. Over noen uker setter den seg på
+korrigere den på noe den burde visst — er det en kandidat til filen. Over noen uker setter den seg på
 et nivå som passer prosjektet. Og når du committer den, har du gitt resten av teamet det samme faste
 teammedlemmet, ikke en fersk innleid hver morgen.
 
