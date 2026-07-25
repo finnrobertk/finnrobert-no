@@ -1,10 +1,21 @@
 ---
+import { Image } from 'astro:assets';
 import BaseLayout from '../layouts/BaseLayout.astro';
+import portrett from '../assets/finn-robert.jpg';
 ---
 
 <BaseLayout tittel="Om meg" beskrivelse="Finn-Robert — erfaren utvikler som jobber praktisk med KI, context engineering og agenter.">
   <article class="prose">
     <h1>Om meg</h1>
+    <figure class="portrett">
+      <Image
+        src={portrett}
+        alt="Finn-Robert i hvit poloskjorte ved et utebord i en park, med en bok i hendene og sollys gjennom løvet."
+        widths={[220, 260, 440, 520]}
+        sizes="(min-width: 40rem) 260px, 220px"
+        loading="eager"
+      />
+    </figure>
     <p style="font-size: var(--text-lg);">
       Jeg heter Finn-Robert — erfaren utvikler med mange års bakgrunn, nå med dyp interesse for
       alle sider av KI.
@@ -36,3 +47,34 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <p><a href="/kontakt" class="btn">Ta kontakt</a></p>
   </article>
 </BaseLayout>
+
+<style>
+  /* Portrettet er et tillegg til lesekolonnen, ikke en ny seksjon. På mobil
+     ligger det som en rolig blokk under overskriften; fra 40rem flyter det til
+     høyre så teksten legger seg rundt det. Bevisst lite — 2:3 i full
+     prose-bredde ville blitt nesten 1000px høyt og tatt over siden. */
+  .portrett {
+    margin: 0 0 var(--space-md);
+    max-width: 220px;
+  }
+  .portrett :global(img) {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 2 / 3;
+    object-fit: cover;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+  }
+
+  @media (min-width: 40rem) {
+    .portrett {
+      float: right;
+      max-width: 260px;
+      margin: 0 0 var(--space-md) var(--space-lg);
+    }
+  }
+
+  /* Floaten skal ikke lekke inn i neste seksjon */
+  .prose h2 { clear: both; }
+</style>
