@@ -30,14 +30,14 @@ Nå tenker jeg på det som redaktørarbeid. Før jeg gir modellen noe, stiller j
 ikke» — så er svaret nei. Det skader. Hver ekstra bit konkurrerer om oppmerksomheten til det som
 faktisk teller.
 
-Konkret betyr det at jeg heller limer inn én funksjon enn hele fila, og skriver «her er
+Konkret betyr det at jeg heller limer inn én funksjon enn hele filen, og skriver «her er
 feilhåndteringen vår, følg samme mønster» i stedet for å håpe modellen finner mønsteret selv i 800
 linjer. Det er mer jobb i øyeblikket. Men det er den jobben som skiller et brukbart svar fra et jeg
 må skrive om.
 
 ## Stående kontekst: det modellen skal vite hver gang
 
-Noe kontekst er engangs — denne oppgaven, denne fila. Men mye av det jeg ellers ville gjentatt i
+Noe kontekst er engangs — denne oppgaven, denne filen. Men mye av det jeg ellers ville gjentatt i
 hver eneste samtale, er *stående*: ting som er sant uansett hva jeg spør om.
 
 Det legger jeg i en instruksfil. I Claude Code heter den `CLAUDE.md`, og den leses automatisk når
@@ -55,10 +55,9 @@ Poenget er ikke filformatet. Poenget er at jeg slipper å forklare det samme på
 modellen aldri starter blank på det som er konstant. Det er stående kontekst — skrevet én gang,
 lest hver gang.
 
-Akkurat denne fila fortjener et eget dypdykk — hva som bør stå i en `CLAUDE.md`, hva som *ikke* bør,
-og fellene jeg selv har gått i. Det kommer i et eget innlegg snart.
-<!-- TODO 14.07: gjør «et eget innlegg» til lenke → /blogg/claude-md-staaende-kontekst når dypdykket er live -->
-
+Akkurat denne filen fortjener et eget dypdykk — hva som bør stå i en `CLAUDE.md`, hva som *ikke* bør,
+og fellene jeg selv har gått i. Det har jeg skrevet om i
+[CLAUDE.md: å gi et KI-verktøy stående kontekst](/blogg/claude-md-staaende-kontekst).
 
 Den samme tankegangen gjelder metadata. I kunnskapsbasen min starter hver notatfil med en liten
 YAML-blokk på toppen: type, område, status, tags. Det er kontekst maskinen kan lese uten å gjette —
