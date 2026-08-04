@@ -1,6 +1,6 @@
 ---
 tittel: "Context engineering i praksis: grepene jeg faktisk bruker"
-ingress: "Introen forklarte hva context engineering er og hvorfor det avgjør. Her er det konkrete håndverket — hvordan jeg trimmer, strukturer og verifiserer kontekst i hverdagen, inkludert det jeg fortsatt ikke har funnet ut av."
+ingress: "Introen forklarte hva context engineering er og hvorfor det avgjør. Her er det konkrete håndverket — hvordan jeg trimmer, strukturerer og verifiserer kontekst i hverdagen, inkludert det jeg fortsatt ikke har funnet ut av."
 dato: 2026-07-02
 tags: [context-engineering, ki, claude-code, oppsett]
 pilar: context-engineering
