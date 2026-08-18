@@ -69,7 +69,7 @@ Noen eksempler som går igjen i norske bedrifter:
 
 Legg merke til at dette ikke er spektakulært. Du skal ikke lete etter «det som vil revolusjonere
 bransjen», men etter en kjedelig, gjentakende oppgave som stjeler tid fra noen hver uke. Det er der
-KI gir tidligst og tryggest gevinst — og det er et ærligere sted å lære fra enn et prestisjeprosjekt.
+KI gir tidligst og tryggest gevinst — og ingen har prestisje investert i at det skal virke.
 
 ## Steg 2: La én person prøve, på ekte, i to uker
 
