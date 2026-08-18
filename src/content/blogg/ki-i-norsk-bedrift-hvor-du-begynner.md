@@ -1,10 +1,10 @@
 ---
 tittel: "KI i en norsk bedrift: hvor du faktisk bør begynne"
 ingress: "Du trenger ikke en KI-strategi for å komme i gang. Du trenger én kjedelig oppgave, én nysgjerrig person, to uker — og et ærlig svar på om det virket."
-dato: 2026-06-26
+dato: 2026-08-18
 tags: [ki-for-selskaper, ledelse, ki]
 pilar: ki-for-selskaper
-utkast: true
+utkast: false
 ---
 
 De fleste norske ledere jeg snakker med er på samme sted med kunstig intelligens (KI). De har
