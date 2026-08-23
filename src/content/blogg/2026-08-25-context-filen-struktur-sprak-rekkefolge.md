@@ -184,9 +184,15 @@ Så til spørsmålet om filen *kan*, *bør* eller *må* hete noe bestemt. Den **
 ser etter — navnene er ikke forslag, og et verktøy som ikke finner filen sin sier ikke fra. Den
 **bør** hete `AGENTS.md` hvis du vil treffe bredest.
 
-Og det du **kan** gjøre, som er det jeg lander på selv: skriv innholdet én gang i `AGENTS.md`, og
+Og det du **kan** gjøre, og som er det jeg vil anbefale: skriv innholdet én gang i `AGENTS.md`, og
 legg en `CLAUDE.md` ved siden av som består av én linje — `@AGENTS.md`. Da har du én kilde å
 vedlikeholde og to verktøy som leser den.
+
+Jeg har ikke gjort det selv ennå. Repoene mine har fortsatt en helt vanlig `CLAUDE.md` med alt
+innholdet i seg — også kunnskapsbasen jeg viste deg lenger opp. Det er ikke fordi jeg er uenig med
+meg selv. Det er fordi anbefalingen ble riktig etter at filene ble skrevet, og fordi det å flytte
+dem er den typen opprydding som aldri havner øverst på lista. Sånn ser det ut når feltet flytter
+seg fortere enn man rekker å rydde.
 
 Én ærlig fotnote: i juli-innlegget skrev jeg at «Cursor har `.cursorrules`». Det stemte da jeg
 skrev det. Seks uker senere står det i Cursors egen dokumentasjon at filen er legacy. Det er
