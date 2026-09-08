@@ -1,10 +1,10 @@
 ---
 tittel: "Context-filen: struktur, språk og rekkefølge"
 ingress: "Alle skriver at du bør ha en instruksfil til KI-verktøyet ditt. Få skriver hvordan innholdet faktisk bør se ut. Her er rekkefølgen jeg lander på, hvordan reglene bør formuleres — og hva filen heter i de ulike verktøyene per august 2026."
-dato: 2026-08-25
+dato: 2026-09-08
 tags: [context-engineering, ki, claude-md, agents-md, oppsett]
 pilar: context-engineering
-utkast: true
+utkast: false
 ---
 
 I juli skrev jeg om [CLAUDE.md — å gi et KI-verktøy stående kontekst](/blogg/claude-md-staaende-kontekst):
