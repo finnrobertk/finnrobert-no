@@ -64,6 +64,38 @@ hr { border: none; border-top: 1px solid var(--color-border); margin: var(--spac
 .prose > * + * { margin-top: var(--space-md); }
 .prose h2 { margin-top: var(--space-lg); }
 
+/* Tabeller i innlegg (markdown). Tynne kantlinjer i tokenfargen så cellene
+   kan skilles fra hverandre — innspill fra en leser, sept. 2026. */
+.prose table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--text-sm, 0.9375rem);
+  line-height: 1.5;
+}
+.prose th,
+.prose td {
+  border: 1px solid var(--color-border);
+  padding: var(--space-xs) var(--space-sm);
+  text-align: left;
+  vertical-align: top;
+}
+.prose th {
+  background: var(--color-surface);
+  font-weight: 600;
+}
+.prose td code,
+.prose th code {
+  white-space: nowrap;
+}
+/* Brede tabeller ruller sideveis på smale skjermer i stedet for å sprenge kolonnen */
+@media (max-width: 40rem) {
+  .prose table {
+    display: block;
+    max-width: 100%;
+    overflow-x: auto;
+  }
+}
+
 .muted { color: var(--color-text-muted); }
 .text-sm { font-size: var(--text-sm); }
 
