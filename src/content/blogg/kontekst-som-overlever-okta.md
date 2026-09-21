@@ -20,7 +20,7 @@ sted verktøyet finner det i dag.
 
 Jeg har skrevet om den ene enden av dette før: det som er konstant i et prosjekt hører i en
 instruksfil som leses hver gang, se [CLAUDE.md: å gi et KI-verktøy stående kontekst](/blogg/claude-md-staaende-kontekst).
-Men det innlegget sa også at ting som endrer seg ikke skal i den filen. Det sa ikke hvor de skal.
+Men det innlegget sa også at ting som endrer seg ikke skal i den filen. Jeg sa ikke hvor de skal.
 Dette innlegget handler om det.
 
 ## Hvor lenge må dette huskes?
@@ -72,6 +72,48 @@ kommer.
 Det som er felles for alle tre: de er ikke prompten, og de er ikke instruksfilen. De er filer i
 repoet, versjonert sammen med koden, skrevet for å bli lest igjen. Oppgavebeskrivelsen du gir i
 en prompt er kortlevd, den kastes når oppgaven er gjort. Det oppgaven førte til, er langlivet.
+
+## «Skal vi sjekke inn promptene, da?»
+
+Det er spørsmålet jeg får oftest når jeg forklarer dette, og jeg tror svaret er nei.
+
+Tanken bak er logisk nok. Samtalen forsvinner, og hvis det er problemet, så ta vare på samtalen.
+Men en promptlogg er en transkripsjon av *hvordan* dere kom fram til noe, ikke av hva dere kom
+fram til. Den inneholder blindveiene, omformuleringene og de tre forsøkene før det fjerde virket.
+Alt sammen var nyttig i øyeblikket, og er støy etterpå.
+
+Og den gjør det egentlige problemet verre. Hele poenget med det midterste laget er at noe skal
+være lett å finne igjen. Femti økter med logg gir dårligere kontekst enn fem beslutningsnotiser,
+fordi noen må lete fram signalet først. Og «noen» er enten deg en
+travel morgen, eller en agent som bruker halve konteksten sin på å lese seg gjennom det.
+
+Ett unntak: når prompten selv er en del av det dere lager — en fast instruks som styrer hvordan en
+tjeneste oppfører seg — er den kode, og hører i git som annen kode. Men det er et annet spørsmål
+enn det folk vanligvis mener når de spør.
+
+Det jeg har lest meg opp på og landet på selv, er å skrive ett eller flere dokumenter per løsning
+som til sammen svarer på fire spørsmål:
+
+- **Hva gjør systemet?** Hva tjenesten er til, hvilke begreper domenet har, hvilke regler som
+  gjelder.
+- **Hva er bestemt, og hvorfor?** Arkitekturbeslutninger som ADR-er, og de funksjonelle
+  avklaringene ved siden av — de som ikke handler om teknologi, men om hva løsningen skal gjøre.
+- **Hva er innenfor og utenfor scope?** Like viktig er det siste. En agent som ikke vet hva
+  løsningen *ikke* skal gjøre, foreslår det gjerne.
+- **Hva er neste steg?** Én linje om hvor dere slapp.
+
+De to første er det jeg allerede har vært inne på. De to siste er de som oftest mangler, og de er
+billigst å skrive: scope er som regel noe dere ble enige om muntlig for lenge siden, og neste steg
+tar tretti sekunder på slutten av en økt.
+
+Ingenting av dette er skrevet for KI-verktøyets skyld. Det er dokumentasjon et
+team burde hatt uansett. Forskjellen er at det før var lett å utsette, fordi den som manglet den
+var en kollega som kunne komme bort og spørre. Nå er det også en agent som ikke kan spørre, og som
+gjetter i stedet. Det er den samme jobben, men den har blitt vanskeligere å skyve på — og det
+tror jeg er en god ting.
+
+Målet er at en utvikler som er ny på løsningen, og en agent som starter blank, kan plukke opp
+tråden fra samme sted.
 
 ## Et ekte eksempel
 
@@ -144,8 +186,8 @@ for det som gjelder nå, og det er greit at den forsvinner.
 Modellen starter blank hver gang. Det du kan gjøre noe med, er hva den finner når den starter.
 
 Spør om hver bit kontekst: hvor lenge må dette huskes? Alltid, så inn i instruksfilen. Til noen
-bestemmer noe annet, så inn i en fil i repoet: beslutningen, hvordan det virker, hva det er til.
-Bare nå, så inn i prompten.
+bestemmer noe annet, så inn i en fil i repoet: beslutningen, hvordan det virker, hva det er til,
+hva som er utenfor scope, og hvor dere slapp. Bare nå, så inn i prompten — og bare der.
 
 Det midterste laget er det som gjør at arbeidet kan fortsettes. Det er også det som krever at du
 stopper opp et øyeblikk og skriver. Det er ikke mye. Men det er forskjellen på et verktøy som
