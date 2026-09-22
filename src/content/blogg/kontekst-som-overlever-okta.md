@@ -1,10 +1,10 @@
 ---
 tittel: "Kontekst som overlever økta"
 ingress: "Alt du forklarer i en prompt er borte når økta er over. Det som avgjør om arbeidet kan fortsettes neste uke, er hva som ligger i filer verktøyet leser neste gang: beslutningene, og dokumentasjonen av hva som er bygd og hvorfor."
-dato: 2026-09-29
+dato: 2026-09-22
 tags: [context-engineering, ki, claude-code, dokumentasjon, adr]
 pilar: context-engineering
-utkast: true
+utkast: false
 ---
 
 Du har jobbet en kveld med et KI-verktøy (kunstig intelligens) i et prosjekt. Dere har diskutert
