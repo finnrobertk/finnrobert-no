@@ -16,7 +16,13 @@ const innleggUrl = new URL(`/blogg/${post.id}`, Astro.site).href;
 const linkedInUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(innleggUrl)}`;
 ---
 
-<BaseLayout tittel={post.data.tittel} beskrivelse={post.data.ingress}>
+<BaseLayout
+  tittel={post.data.tittel}
+  beskrivelse={post.data.ingress}
+  ogBilde={`/og/blogg/${post.id}.png`}
+  ogBildeAlt={`«${post.data.tittel}» — blogginnlegg av Finn-Robert Kristensen på finnrobert.no`}
+  publisert={post.data.dato}
+>
   <article class="prose">
     <a href="/blogg" class="text-sm muted">← Alle innlegg</a>
     <header style="margin-block: var(--space-md) var(--space-lg);">

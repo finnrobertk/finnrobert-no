@@ -8,12 +8,25 @@ import Analytics from '@vercel/analytics/astro';
 interface Props {
   tittel?: string;
   beskrivelse?: string;
+  /** Sti til delebilde (Open Graph), relativ til roten. Standardbildet brukes hvis utelatt. */
+  ogBilde?: string;
+  ogBildeAlt?: string;
+  /** Settes på blogginnlegg: gir og:type=article + article:published_time. */
+  publisert?: Date;
 }
 
 const {
   tittel,
   beskrivelse = 'KI og context engineering — forklart på norsk, vist i praksis. Finn-Robert deler hvordan han faktisk jobber med KI og agenter.',
+  ogBilde = '/og/standard.png',
+  ogBildeAlt = 'finnrobert.no — KI og context engineering, forklart på norsk, vist i praksis. Finn-Robert Kristensen.',
+  publisert,
 } = Astro.props;
+
+// Kanonisk URL uten avsluttende skråstrek (samme form som lenkene internt), absolutt mot `site`.
+const sti = Astro.url.pathname.length > 1 ? Astro.url.pathname.replace(/\/$/, '') : '/';
+const kanoniskUrl = new URL(sti, Astro.site).href;
+const ogBildeUrl = new URL(ogBilde, Astro.site).href;
 
 const sideTittel = tittel ? `${tittel} · Finn-Robert Kristensen` : 'Finn-Robert Kristensen — KI og context engineering, på norsk';
 ---
@@ -27,7 +40,23 @@ const sideTittel = tittel ? `${tittel} · Finn-Robert Kristensen` : 'Finn-Robert
     <meta name="description" content={beskrivelse} />
     <meta property="og:title" content={sideTittel} />
     <meta property="og:description" content={beskrivelse} />
-    <meta property="og:type" content="website" />
+    <link rel="canonical" href={kanoniskUrl} />
+    <meta property="og:type" content={publisert ? 'article' : 'website'} />
+    <meta property="og:url" content={kanoniskUrl} />
+    <meta property="og:site_name" content="finnrobert.no" />
+    <meta property="og:locale" content="nb_NO" />
+    <meta property="og:image" content={ogBildeUrl} />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={ogBildeAlt} />
+    {publisert && <meta property="article:published_time" content={publisert.toISOString()} />}
+    {publisert && <meta property="article:author" content="Finn-Robert Kristensen" />}
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={sideTittel} />
+    <meta name="twitter:description" content={beskrivelse} />
+    <meta name="twitter:image" content={ogBildeUrl} />
+    <meta name="twitter:image:alt" content={ogBildeAlt} />
     <meta name="generator" content={Astro.generator} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
