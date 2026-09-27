@@ -72,12 +72,23 @@ interface OgValg {
   undertekst?: string;
 }
 
-// Unngå ett ensomt kort ord på siste linje: lim de to siste ordene sammen med hardt mellomrom.
-const utenEnkeOrd = (t: string) => t.replace(/\s+(\S{1,8})$/, '\u00A0$1');
+// Egen ombryting: hvert ord blir et uknekkelig span i en flex-wrap-beholder, så ord med bindestrek
+// («KI-verktøy») aldri brytes ved streken — uten å være avhengig av en U+2011-glyf i fonten.
+// De to siste ordene holdes samlet når det siste er kort, så det ikke blir stående alene.
+function tittelOrd(t: string): string[] {
+  const ord = t.trim().split(/\s+/);
+  if (ord.length > 2 && ord[ord.length - 1].length <= 8) {
+    const siste = ord.pop()!;
+    ord[ord.length - 1] += `\u00A0${siste}`;
+  }
+  return ord;
+}
 
-function mal({ tittel: råTittel, undertekst }: OgValg): Node {
-  const tittel = utenEnkeOrd(råTittel);
-  const str = tittelStorrelse(råTittel);
+function mal({ tittel, undertekst }: OgValg): Node {
+  const str = tittelStorrelse(tittel);
+  const ordbit = tittelOrd(tittel).map((o) =>
+    h('span', { whiteSpace: 'nowrap', marginRight: '0.26em' }, o),
+  );
   return h(
     'div',
     {
@@ -118,9 +129,11 @@ function mal({ tittel: råTittel, undertekst }: OgValg): Node {
             lineHeight: 1.12,
             letterSpacing: '-0.01em',
             color: farge.tekst,
-            lineClamp: 4,
+            flexWrap: 'wrap',
+            maxHeight: str * 1.12 * 4,
+            overflow: 'hidden',
           },
-          tittel,
+          ...ordbit,
         ),
       ),
       // Bunn: navn + undertekst, skilt med tynn kantlinje
