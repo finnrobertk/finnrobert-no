@@ -64,7 +64,8 @@ meg eller i prompten, eller det manglet i konteksten.
 Det gjør verifisering og [context engineering](/blogg/hva-er-context-engineering) til to sider av
 samme sak. En feil i gjennomgangen peker ofte tilbake på en regel som burde stått i konteksten, og
 da er det ikke nok å rette koden. Regelen må også skrives ned et sted agenten finner den neste gang,
-for eksempel i [kontekstfilen](/blogg/context-filen-struktur-sprak-rekkefolge).
+for eksempel i [kontekstfilen](/blogg/context-filen-struktur-sprak-rekkefolge). Det gjør jeg fast:
+forretningsreglene står beskrevet, og beskrivelsen holdes oppdatert når reglene endres.
 
 ## Et eksempel: det så ferdig ut
 
@@ -113,8 +114,7 @@ defaultCommissionPct:
     : normalizeCommissionPct(data.default_commission_pct),
 ```
 
-Det fjerner symptomet, men de to delene bruker fortsatt hver sin enhet, og en provisjon på 1 % vil
-bli lest som 100 %. Å godta en rettelse er samme vurdering som å godta den opprinnelige koden: løser
+Det fjerner symptomet, men de to delene bruker fortsatt hver sin enhet. Å godta en rettelse er samme vurdering som å godta den opprinnelige koden: løser
 den problemet, eller bare den delen av det du så?
 
 ## Tre måter å verifisere på
