@@ -80,7 +80,8 @@ rotete kontekst — den fikk «fiks innloggingen» uten resten.
 
 Det er en god nyhet, egentlig. Det betyr at den viktigste innsatsen ikke ligger i å vente på en
 sterkere modell, men i noe du kan begynne med nå: bli flink til å gi den du allerede har riktig
-kontekst.
+kontekst. De konkrete grepene jeg bruker, har jeg samlet i
+[Context engineering i praksis](/blogg/context-engineering-i-praksis).
 
 ## Hva dette betyr i praksis
 

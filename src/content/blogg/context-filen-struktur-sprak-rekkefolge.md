@@ -57,6 +57,7 @@ både mennesker og modeller. Del dem opp.
 **Lenk i stedet for å lime.** Har du et arkitekturdokument, en API-spesifikasjon eller en lang
 kodestandard, pek på filen. Instruksfilen leses hver gang; det store dokumentet trenger bare leses
 når det er relevant. Dette er hele skillet mellom stående kontekst og kontekst som hentes ved behov.
+Hva som hører i den andre kategorien, skrev jeg om i [Kontekst som overlever økta](/blogg/kontekst-som-overlever-okta).
 
 **Grupper etter når det gjelder, ikke etter tema.** Ting som gjelder alltid øverst. Ting som bare
 gjelder i én mappe hører til i den mappen — flere verktøy leser instruksfiler i underkataloger,

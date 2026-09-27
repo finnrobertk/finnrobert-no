@@ -108,6 +108,10 @@ verdt mer enn enhver strategi — for nå snakker dere om noe ekte, ikke om noe 
 Hvis svaret er nei, har du også lært noe verdifullt — og billig: den oppgaven var ikke den rette.
 Da prøver dere en annen. Det er ikke en fiasko, det er hvordan man finner ut av det.
 
+Ett forbehold: et svakt resultat kan også skyldes at verktøyet fikk for lite å gå på, ikke at
+oppgaven var feil. Hvorfor det skjer så ofte, forklarte jeg i
+[Hva er context engineering, forklart enkelt](/blogg/hva-er-context-engineering).
+
 ## Slik så det ut da jeg prøvde det selv
 
 Ta ett av punktene over — å lete frem svar i avtaler og dokumenter. Jeg gjorde akkurat det i sommer,

@@ -88,7 +88,8 @@ domenelogikken i `core/`, adaptere (web, db, kø) i `adapters/`.
 ```
 
 Legg merke til at det ikke er mye. En halv skjerm. Hvert punkt er noe modellen ellers ville gjettet
-på eller bommet på.
+på eller bommet på. Rekkefølgen og formuleringen av slike linjer går jeg gjennom i
+[Context-filen: struktur, språk og rekkefølge](/blogg/context-filen-struktur-sprak-rekkefolge).
 
 ## Hva som ikke bør stå der
 
@@ -105,7 +106,8 @@ der, koster oppmerksomhet i hver økt. Det er ikke et lager for alt du vet om pr
   — behandle den som offentlig kildekode.
 
 Tommelen: hører dette hjemme i *enhver* økt i prosjektet? Da inn. Gjelder det bare av og til, eller
-bare nå? Da ut.
+bare nå? Da ut. Hvor det som gjelder av og til bør ligge i stedet, skrev jeg om i
+[Kontekst som overlever økta](/blogg/kontekst-som-overlever-okta).
 
 ## To feller jeg har gått i
 

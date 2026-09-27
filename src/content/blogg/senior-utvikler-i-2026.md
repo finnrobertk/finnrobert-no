@@ -83,7 +83,7 @@ en religion. Tommelfingerregelen min: jo mer veldefinert og mønstertungt arbeid
 lønner det seg å delegere. Jo mer det krever en avgjørelse om *hva* som er riktig, jo mer sitter
 jeg i førersetet.
 
-Den andre store endringen er at jeg har bygget opp kontekst som varer. Jeg har et personlig
+Den andre store endringen er at jeg har bygget opp [kontekst som varer](/blogg/kontekst-som-overlever-okta). Jeg har et personlig
 oppsett der prosjektnotater, beslutninger og arbeidsmåter ligger strukturert, slik at agentene
 mine starter med å vite ting i stedet for å gjette. Det har jeg beskrevet i
 [Slik har jeg satt opp en personlig KI-kunnskapsbase med agenter](/blogg/personlig-ki-kunnskapsbase-med-agenter).

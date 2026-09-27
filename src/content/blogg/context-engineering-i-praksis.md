@@ -57,7 +57,8 @@ lest hver gang.
 
 Akkurat denne filen fortjener et eget dypdykk — hva som bør stå i en `CLAUDE.md`, hva som *ikke* bør,
 og fellene jeg selv har gått i. Det har jeg skrevet om i
-[CLAUDE.md: å gi et KI-verktøy stående kontekst](/blogg/claude-md-staaende-kontekst).
+[CLAUDE.md: å gi et KI-verktøy stående kontekst](/blogg/claude-md-staaende-kontekst), og hvordan
+innholdet bør ordnes og formuleres i [Context-filen: struktur, språk og rekkefølge](/blogg/context-filen-struktur-sprak-rekkefolge).
 
 Den samme tankegangen gjelder metadata. I kunnskapsbasen min starter hver notatfil med en liten
 YAML-blokk på toppen: type, område, status, tags. Det er kontekst maskinen kan lese uten å gjette —
@@ -96,7 +97,8 @@ Tegnet jeg ser etter: når jeg begynner å *korrigere* modellen om og om igjen �
 at vi bestemte X» — er det som regel et signal om at konteksten er blitt grumsete. Da er det ofte
 raskere å starte friskt: ny samtale, og bare det som faktisk gjelder nå, presist formulert. Mye av
 forvirringen forsvinner rett og slett fordi rotet ikke ble med over. En frisk start med riktig
-kontekst slår en lang samtale full av blindspor.
+kontekst slår en lang samtale full av blindspor. Det som ble bestemt underveis, må da ligge et sted
+den nye samtalen finner det. Det skrev jeg om i [Kontekst som overlever økta](/blogg/kontekst-som-overlever-okta).
 
 ## Verifiser — kontekst gjør feil mindre sannsynlig, ikke umulig
 

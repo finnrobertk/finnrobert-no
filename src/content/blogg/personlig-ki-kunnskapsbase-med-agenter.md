@@ -78,7 +78,8 @@ mellom hver gang, og som begge svarer litt utenfor sin kjerne.
 
 Verktøyet jeg kjører alt dette i, er Claude Code, startet fra rota av kunnskapsbasen. Det betyr at
 agentene har hele kunnskapsbasen som arbeidsområde — de kan lese notatene mine, søke i dem og skrive
-nye filer der de hører hjemme.
+nye filer der de hører hjemme. Strukturen og grensene står i en instruksfil i rota, som verktøyet
+leser hver gang det starter; se [CLAUDE.md: å gi et KI-verktøy stående kontekst](/blogg/claude-md-staaende-kontekst).
 
 ## Personalsjefen som ansetter nye agenter
 

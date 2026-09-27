@@ -31,6 +31,8 @@ Jeg skriver om fire ting:
 - **Fra senior utvikler til KI-forsterket** — for deg som er erfaren og vil endre arbeidsmåte.
 - **KI for norske selskaper** — hva som gir reell verdi, og hva som bare er støy.
 
-Ingen «10x»-løfter. Bare det jeg faktisk gjør, og det jeg lærer av det.
+Ingen «10x»-løfter. Bare det jeg faktisk gjør, og det jeg lærer av det. Et godt sted å begynne er
+[Hva er context engineering, forklart enkelt](/blogg/hva-er-context-engineering), som mye av resten
+bygger på.
 
 Velkommen.
