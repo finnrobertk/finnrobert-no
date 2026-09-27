@@ -1,6 +1,6 @@
 ---
 tittel: "Skarpe agentroller: én jobb, tydelige grenser"
-ingress: "En agentrolle i Claude Code er en kort fil med to felt som betyr noe: beskrivelsen som avgjør når den brukes, og instruksen den får når den kjører. Her er fem ekte roller fra mitt oppsett, og hvor grensene mellom dem holder og hvor de ikke gjør det."
+ingress: "En agentrolle i Claude Code er en kort fil med to felt som betyr noe: beskrivelsen som avgjør når den brukes, og instruksen den får når den kjører. Her er fem ekte roller fra mitt oppsett, og det jeg fant da jeg leste gjennom dem: overlapp og grenser jeg aldri hadde bestemt meg for."
 dato: 2026-10-13
 tags: [agenter, sub-agenter, claude-code, oppsett, agent-bruk]
 pilar: agent-bruk
@@ -11,6 +11,11 @@ To ganger har jeg skrevet at smale agentroller slår brede: i
 [innlegget om KI-kunnskapsbasen min](/blogg/personlig-ki-kunnskapsbase-med-agenter) og i
 [Context engineering i praksis](/blogg/context-engineering-i-praksis). Begge gangene sa jeg *hvorfor*,
 men ingen av dem viste hvordan en slik rolle faktisk ser ut. Det gjør jeg her, med filene jeg bruker.
+
+Da jeg gikk gjennom filene for å skrive dette, fant jeg mer enn jeg ventet. Rollene overlapper noen
+steder, og flere av grensene i oppsettet er ikke valg jeg har tatt, bare noe som ble sånn. Det har
+ikke gitt meg problemer så langt. Men det er verdt å vise, fordi det er slik et oppsett ser ut etter
+en stund i bruk.
 
 Eksemplene er mine utviklingsagenter i Claude Code: en for arkitektur, en for backend, en for
 frontend, en for UX og en for designsystem. De ligger i `~/.claude/agents/` og er tilgjengelige i
@@ -65,8 +70,8 @@ Ekspert på backend i Kotlin/Spring Boot med sterk TDD/BDD-praksis. Bruk for bac
 testdrevet utvikling, teststrategi, MockK og ryddig domenekode.
 ```
 
-Ordene i «Bruk for»-lista er ordene jeg selv bruker når jeg ber om noe. Sier jeg «teststrategi»,
-er det ikke tvil om hvor det hører hjemme.
+Ordene i «Bruk for»-lista bør være de samme som du bruker når du ber om noe. Ber du om en
+teststrategi, er det ikke tvil om hvor oppgaven hører hjemme.
 
 For det andre er beskrivelsene alltid lastet, mens instruksen bare lastes når agenten faktisk
 kjører. Dokumentasjonen sier det rett ut: hold beskrivelsene korte, og flytt detaljene inn i
@@ -86,26 +91,28 @@ alternativer eksplisitt og ikke lande for raskt. Backend-agenten skal vise kode 
 kort. Begge er riktige regler for sin jobb. Står de i samme instruks, må modellen avgjøre
 hvilken som gjelder, hver gang, uten å vite hvilken jobb du egentlig ba om.
 
-Testen jeg bruker på en ny rolle: kan «Bruk for»-lista skrives uten at den overlapper en agent som
-finnes fra før? Hvis ikke, er det ikke en ny rolle. Det er en utvidelse av en gammel, eller to
-roller som burde vært én.
+Rollene hos meg har ikke stått stille. Jeg har lagt til en ny, mer spesialisert agent fordi noen
+oppgaver trengte en smalere rolle enn de eksisterende ga, og den nye tok over en del av jobben til
+én eller to av de andre. Det som er lett å glemme da, er de gamle beskrivelsene. Oppgavene den nye
+agenten tok over, kan fortsatt stå i «Bruk for»-lista til de gamle.
 
-> ✍️ **F-R:** Har du en konkret gang der en for bred agent ga deg dårligere svar enn en smal ville
-> gjort? Hva ba du om, og hva gikk galt? Ett eksempel holder.
-
-> ✍️ **F-R:** Har du noen gang delt én rolle i to, eller slått to sammen? Hva var det som fikk deg
-> til å gjøre det?
+En enkel test for en ny rolle er derfor om «Bruk for»-lista kan skrives uten at den overlapper en
+agent som finnes fra før. Går ikke det, må du enten flytte oppgavene fra den gamle rollen, eller
+vurdere om det egentlig er en utvidelse av den.
 
 ## Grensene: der to roller møtes
 
-Å skrive hva en agent skal gjøre, er den enkle delen. Grensene er vanskeligere, og da jeg leste
-gjennom mine egne filer til dette innlegget, fant jeg to steder der de ikke er så skarpe som
-tittelen lover.
+Å skrive hva en agent skal gjøre, er den enkle delen. Grensene er vanskeligere, og i mine egne
+filer fant jeg to steder der de ikke er så skarpe som tittelen lover.
 
 Frontend-agenten skal brukes for «komponentdesign». Designsystem-agenten skal brukes for
 «komponentbibliotek». Spør jeg om en ny knappekomponent, passer begge. UX-agenten skal gjøre
 «funksjoner enkle å bruke», mens frontend-agenten har «tilgjengelighet». Det er beslektet nok til
 at en forespørsel om et skjema kan gå begge veier.
+
+Jeg lar Claude velge agent selv, og jeg kan ikke huske at en oppgave har havnet hos feil agent.
+Overlappene har altså ikke kostet meg noe jeg har merket. Men de betyr at valget i de tilfellene
+hviler på hvordan Claude tolker forespørselen, ikke på en grense jeg har satt.
 
 Ingen av de fem utviklingsagentene sier hva de *ikke* skal gjøre. Grensene er underforstått, ut fra
 hva som står i «Bruk for»-lista. Det virker så lenge listene ikke overlapper, og det gjør de altså
@@ -123,17 +130,14 @@ Den siste setningen sier både hva som er utenfor og hvem som eier det i stedet.
 Rutingen får et signal om hva som *ikke* skal hit. Og når oppgaven likevel havner hos skribenten,
 står det i instruksen hennes hvem hun skal peke videre til.
 
-Jeg vet ikke sikkert hvor mye en slik IKKE-setning endrer rutingen, sammenlignet med en presis
-«Bruk for»-liste alene. Jeg har ikke testet det systematisk. Det jeg kan si, er at den gjør
-grensen lesbar for meg når jeg går gjennom filene, og at det er der jeg oppdager overlappene.
+At skribenten har en IKKE-linje og utviklingsagentene ikke har det, er ikke et valg jeg har
+tatt. Jeg vet ikke hvorfor det ble sånn. Jeg la merke til forskjellen først da jeg satte filene ved
+siden av hverandre til dette innlegget.
 
-> ✍️ **F-R:** Har Claude noen gang sendt en oppgave til feil agent hos deg, for eksempel frontend
-> i stedet for designsystem? Og i så fall: hva gjorde du med det, endret du beskrivelsen eller
-> ber du om agenten ved navn?
-
-> ✍️ **F-R:** Skribenten har en IKKE-linje, utviklingsagentene har det ikke. Er det et bevisst
-> valg, eller bare at de ble skrevet på forskjellige tidspunkt? Vil du legge til grenser på
-> Frida og Stella etter dette?
+Jeg vet heller ikke hvor mye en slik IKKE-setning endrer rutingen, sammenlignet med en presis
+«Bruk for»-liste alene. Jeg har ikke testet det. Det jeg kan si, er at den gjør grensen synlig
+for den som leser filen. Uten den må overlappene finnes ved å sammenligne lister, slik jeg gjorde
+over.
 
 ## Verktøy er også en grense
 
@@ -146,8 +150,10 @@ fem utviklingsagenter gjør det. Arkitekten kan i dag skrive kode like fritt som
 selv om instruksen hans handler om å veie alternativer og foreslå ADR-er. En arkitekt som bare kan
 lese, ville vært en tydeligere rolle enn en arkitekt som får beskjed om å la være.
 
-> ✍️ **F-R:** Er det et bevisst valg at utviklingsagentene har full verktøytilgang? Vil du at
-> arkitekten skal kunne skrive filer, for eksempel ADR-er selv, eller bør han være lesende?
+Heller ikke dette er et bevisst valg. Feltet ble aldri fylt ut, og da får agenten alt. Om
+arkitekten bør kunne skrive filer, for eksempel ADR-er, er et reelt spørsmål. Men det er et
+spørsmål jeg aldri har stilt. Et tomt `tools`-felt bestemmer også hva agenten kan gjøre, men da
+er det ingen som har vurdert det.
 
 ## Når du vil velge selv
 
@@ -155,15 +161,13 @@ Automatisk ruting er ikke det eneste alternativet. Skriver du «bruk arkitekt-ag
 dette» i prompten, er det et sterkt hint, men Claude avgjør fortsatt. Nevner du agenten med `@`,
 på samme måte som du nevner en fil, kjører den agenten garantert.
 
-Det er et nyttig skille. Automatisk ruting er for oppgaver du ikke vil tenke på. `@` er for når du
-vet hvem som skal gjøre jobben, og ikke vil risikere at en overlappende beskrivelse vinner.
-
-> ✍️ **F-R:** Hvordan velger du i praksis: lar du Claude rute, nevner du agenten ved navn i
-> prompten, eller bruker du `@`? Hvis du har en vane her, er den verdt en setning.
+Selv har jeg latt Claude velge, og jeg visste ikke før jeg leste dokumentasjonen til dette
+innlegget at `@` garanterer agenten. Det har gått bra uten. Men med roller som overlapper, er `@`
+den enkleste måten å bestemme selv når det faktisk betyr noe hvem som gjør jobben.
 
 ## Sjekkliste for én rolle
 
-Når jeg skriver en ny agent eller går gjennom en gammel, er det dette jeg ser etter:
+Dette er lista jeg endte med etter å ha gått gjennom mine egne filer:
 
 - **Beskrivelsen sier når.** «Bruk for» etterfulgt av ordene du selv bruker når du ber om noe.
 - **Beskrivelsen er kort.** Detaljene hører i instruksen, som bare lastes når agenten kjører.
@@ -173,9 +177,10 @@ Når jeg skriver en ny agent eller går gjennom en gammel, er det dette jeg ser 
 - **Verktøyene passer rollen.** En agent som skal vurdere, trenger ikke skrive.
 - **Instruksen gjentar ikke `CLAUDE.md`.** Det som gjelder prosjektet, står der allerede.
 
-Mine egne filer består ikke alle punktene ennå, som du har sett. Det er grunnen til at jeg skriver
-dem ned. Når flere roller kommer til, er det overlappene som gjør at rutingen blir upresis, og de
-er lettest å se når man leser beskrivelsene samlet.
+Mine egne filer består ikke alle punktene, som du har sett. De bryter med tre av dem: listene
+overlapper, grensene står ikke skrevet, og verktøyene er ikke valgt. Ingenting av det har gitt
+meg feil jeg har merket. Men jo flere roller som kommer til, jo mer hviler rutingen på tolkning, og
+overlappene er lettest å se når man leser beskrivelsene samlet.
 
 Hvordan nye roller blir til hos meg, med en egen agent som skriver instruksen og sjekker mot de
 som finnes, har jeg beskrevet i
