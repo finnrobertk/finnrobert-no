@@ -1,0 +1,106 @@
+---
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  innlegg: CollectionEntry<'blogg'>[];
+}
+
+const { innlegg } = Astro.props;
+
+const datoFmt = (d: Date) => d.toLocaleDateString('nb-NO', { day: 'numeric', month: 'long', year: 'numeric' });
+
+// Ingressen avkortes på ordgrense så kortene holder omtrent samme høyde.
+const MAKS_INGRESS = 160;
+const avkort = (tekst: string) => {
+  if (tekst.length <= MAKS_INGRESS) return tekst;
+  const kutt = tekst.slice(0, MAKS_INGRESS);
+  return `${kutt.slice(0, kutt.lastIndexOf(' ')).replace(/[\s,.;:–—-]+$/, '')} …`;
+};
+---
+
+{innlegg.length > 0 && (
+  <aside class="les-videre" aria-labelledby="les-videre-tittel">
+    <h2 id="les-videre-tittel" class="les-videre__tittel">Les videre</h2>
+    <ul class="les-videre__liste">
+      {innlegg.map((post) => (
+        <li class="les-videre__kort">
+          <h3 class="les-videre__korttittel">
+            <a href={`/blogg/${post.id}`}>{post.data.tittel}</a>
+          </h3>
+          <p class="les-videre__ingress">{avkort(post.data.ingress)}</p>
+          <time class="les-videre__dato" datetime={post.data.dato.toISOString()}>{datoFmt(post.data.dato)}</time>
+        </li>
+      ))}
+    </ul>
+  </aside>
+)}
+
+<style>
+  .les-videre {
+    margin-top: var(--space-2xl);
+    padding-top: var(--space-lg);
+    border-top: 1px solid var(--color-border);
+  }
+  .les-videre__tittel {
+    font-size: var(--text-xl);
+    margin: 0 0 var(--space-md);
+  }
+  .les-videre__liste {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: var(--space-sm);
+  }
+  .les-videre__kort {
+    /* Hele kortet er klikkbart via lenkens ::after — én lenke per kort for skjermlesere. */
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3xs);
+    padding: var(--space-sm) var(--space-md);
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    transition: border-color 0.15s ease;
+  }
+  .les-videre__kort:hover {
+    border-color: var(--color-primary);
+  }
+  .les-videre__korttittel {
+    font-size: var(--text-lg);
+    margin: 0;
+  }
+  .les-videre__korttittel a {
+    color: var(--color-text);
+    text-decoration: none;
+  }
+  .les-videre__korttittel a::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: var(--radius-md);
+  }
+  .les-videre__kort:hover .les-videre__korttittel a {
+    color: var(--color-primary);
+  }
+  .les-videre__korttittel a:focus-visible {
+    outline: none;
+  }
+  .les-videre__korttittel a:focus-visible::after {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+  }
+  .les-videre__ingress {
+    margin: 0;
+    color: var(--color-text-muted);
+    font-size: var(--text-sm);
+  }
+  .les-videre__dato {
+    color: var(--color-text-muted);
+    font-size: var(--text-xs);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .les-videre__kort { transition: none; }
+  }
+</style>
