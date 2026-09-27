@@ -86,6 +86,7 @@ function tittelOrd(t: string): string[] {
 
 function mal({ tittel, undertekst }: OgValg): Node {
   const str = tittelStorrelse(tittel);
+  const glyfluft = Math.ceil(str * 0.25);
   const ordbit = tittelOrd(tittel).map((o) =>
     h('span', { whiteSpace: 'nowrap', marginRight: '0.26em' }, o),
   );
@@ -130,7 +131,14 @@ function mal({ tittel, undertekst }: OgValg): Node {
             letterSpacing: '-0.01em',
             color: farge.tekst,
             flexWrap: 'wrap',
-            maxHeight: str * 1.12 * 4,
+            // Klipp til maks 4 linjer, men la glyfene få luft: Fraunces' ascent+descent er større
+            // enn linjehøyden 1.12, så descendere (g, j, p, y) og Å-ringen stikker utenfor linjeboksen.
+            // Polstringen utvider klippeboksen, og like stor negativ marg holder layouten uendret.
+            paddingTop: glyfluft,
+            paddingBottom: glyfluft,
+            marginTop: -glyfluft,
+            marginBottom: -glyfluft,
+            maxHeight: str * 1.12 * 4 + 2 * glyfluft,
             overflow: 'hidden',
           },
           ...ordbit,
