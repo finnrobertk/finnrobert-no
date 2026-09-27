@@ -63,9 +63,50 @@ En liste leseren kan kopiere, gjør mer enn en forklaring.
 
 ## Et eksempel: det så ferdig ut
 
-> ✍️ **F-R:** Ett konkret tilfelle der noe en agent laget så ferdig ut, men ikke var riktig. Hva var
-> oppgaven, hva så riktig ut, hva avslørte feilen, og ville testene ha fanget den? Det må komme fra
-> et eget prosjekt, ikke fra et oppdrag. Et kort før/etter-utdrag av koden eller diffen er best.
+Eksempelet er fra et sideprosjekt, en app for å regne på fakturering og lønn. Koden er i hovedsak
+skrevet sammen med agenter. På innstillingssiden setter du en standard provisjon, og kalkulatorene
+bruker den til å anslå netto lønn.
+
+Hver del fungerte for seg. Innstillingssiden lagret verdien, kalkulatorene regnet riktig, og
+enhetstestene var grønne. Feilen lå mellom dem. Innstillingssiden lagret provisjonen som prosent,
+altså 70. Kalkulatorene forventet en brøk, 0.7, slik standardverdien i koden var skrevet
+(`DEFAULT_COMMISSION_PCT = 0.6`). Profilen sendte tallet rett videre:
+
+```ts
+defaultCommissionPct: data.default_commission_pct,
+```
+
+Og kalkulatoren gjorde det den skulle med tallet den fikk:
+
+```ts
+const commissionLabel = `${Math.round(commissionPct * 100)} % provisjon`;
+```
+
+På skjermen stod det «Estimert netto lønn @ 7000 % provisjon», og netto lønn ble regnet 100 ganger
+for høyt.
+
+Testene brukte brøk, fordi det var det kalkulatoren var skrevet for. De sjekket det de ble skrevet
+for. Ingen test sjekket at det innstillingssiden lagrer, er det samme som kalkulatoren leser.
+
+Feilen ble funnet i juli, mens en annen endring i appen ble verifisert. Den gangen gjorde jeg
+verifiseringen med Claude Code, innlogget mot appen mens den kjørte. Claude Code så teksten, fant
+årsaken og skrev en sak på det. Det var altså ikke en test som fanget feilen, men at appen ble brukt
+med ekte innstillinger.
+
+Også rettelsen må vurderes. Saken foreslo én enhet i hele løsningen, migrering av den lagrede
+verdien og en regel i databasen som bare tillater tall mellom 0 og 1. Det som ble gjort, var
+enklere: verdier over 1 tolkes som prosent og deles på 100 når de leses.
+
+```ts
+defaultCommissionPct:
+  data.default_commission_pct === null
+    ? null
+    : normalizeCommissionPct(data.default_commission_pct),
+```
+
+Det fjerner symptomet, men de to delene bruker fortsatt hver sin enhet, og en provisjon på 1 % vil
+bli lest som 100 %. Å godta en rettelse er samme vurdering som å godta den opprinnelige koden: løser
+den problemet, eller bare den delen av det du så?
 
 ## Tre måter å verifisere på
 
@@ -82,13 +123,17 @@ hva den gjør med input du ikke hadde tenkt på.
 
 Den enkleste verifiseringen er å bruke det du akkurat lagde. Start applikasjonen, gå gjennom flyten,
 prøv verdiene som ikke burde fungere. Det tar noen minutter, og det hoppes over oftere enn man
-skulle tro, gjerne fordi testene er grønne og det føles som om jobben er gjort.
+skulle tro, gjerne fordi testene er grønne og det føles som om jobben er gjort. Provisjonsfeilen over
+ble funnet nettopp slik.
 
 ### Tester er verifisering, ikke rituale
 
 En automatisk test er verdt det den faktisk sjekker. Når samme agent skriver både koden og testene,
 kan de dele samme misforståelse. Testen bekrefter da det koden gjør, og ikke nødvendigvis det den
 skulle gjøre. Grønt betyr i så fall bare at de to er enige med hverandre.
+
+En annen svakhet er grensene. Testene i provisjonseksempelet var riktige for hver del, men ingen
+av dem dekket overgangen mellom delene, og det var der feilen lå.
 
 Spørsmålet mange sitter med, er når det holder med automatiske tester og når man bør teste selv.
 Det har ikke et opplagt svar for den som ikke har gjort det mange ganger, og det blir sjelden sagt
