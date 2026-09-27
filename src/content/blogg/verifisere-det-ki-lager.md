@@ -13,8 +13,8 @@ lovet jeg å komme tilbake til den ferdigheten i et eget innlegg. Dette er det i
 
 Kort fortalt: et kraftig verktøy hever taket for hva du kan produsere raskere enn det hever taket
 for hva du kan vurdere. Det gjelder kunstig intelligens (KI) mer enn noe annet verktøy jeg har
-brukt, og det gjør verifisering til en egen ferdighet. Den må læres med vilje, fordi den ikke
-lenger følger med på kjøpet.
+brukt. Selve ferdigheten, å vurdere kode, er den samme som i vanlig kodegjennomgang. Det nye er at
+den må læres med vilje, fordi den ikke lenger følger med på kjøpet.
 
 ## Hvorfor vurderingen før kom gratis
 
@@ -44,22 +44,27 @@ som riktig. Her vil jeg være mer konkret om hva verifiseringen består av.
 
 ## Hva jeg ser etter først
 
-Dette er delen der erfaringen gjør jobben.
+Jeg begynner med testene. Før jeg leser selve koden, vil jeg se hvilken logikk som er endret, og
+testene viser det raskere enn implementasjonen gjør.
 
-> ✍️ **F-R:** Når du åpner en diff en agent har laget — hva ser du på først, og i hvilken
-> rekkefølge? Stikkord holder; jeg skriver det ut.
+Feilen jeg forventer å finne, er sjelden en syntaksfeil eller et bibliotek brukt feil. Det er en
+forretningsregel som er blitt feil fordi regelen ikke var beskrevet, verken i prompten eller i
+konteksten agenten hadde. Agenten fyller hullet med noe som virker rimelig, og rimelig er ikke alltid
+riktig.
 
-> ✍️ **F-R:** Hvilke feil forventer du å finne? Er det typer som går igjen så ofte at du leter etter
-> dem uten å tenke over det?
+Det er også der jeg er mest skeptisk: er forretningslogikken forstått riktig, er den beskrevet
+riktig, og er den implementert riktig? Det er tre ulike spørsmål, og svikt i ett av dem gir kode som
+virker, men er feil.
 
-> ✍️ **F-R:** Hvor er du mest skeptisk? Hvilke deler av en endring stoler du minst på, og hvilke lar
-> du passere etter et raskt blikk?
+Jeg har ingen sjekkliste. Det er den samme gjennomgangen som om en utvikler hadde levert endringen.
+Jeg må forstå hva som er endret, og være sikker på at det er riktig. Når noe er feil, er årsaken som
+regel den samme enten koden kom fra en agent eller et menneske: noe var ikke godt nok beskrevet, av
+meg eller i prompten, eller det manglet i konteksten.
 
-En liste leseren kan kopiere, gjør mer enn en forklaring.
-
-> ✍️ **F-R:** Har du en sjekkliste — skrevet ned eller i hodet — som du går gjennom før du godtar en
-> endring fra en agent? Gi den som den er, gjerne 5–8 punkter. Finnes den ikke, dropper vi utdraget
-> heller enn å konstruere en.
+Det gjør verifisering og [context engineering](/blogg/hva-er-context-engineering) til to sider av
+samme sak. En feil i gjennomgangen peker ofte tilbake på en regel som burde stått i konteksten, og
+da er det ikke nok å rette koden. Regelen må også skrives ned et sted agenten finner den neste gang,
+for eksempel i [kontekstfilen](/blogg/context-filen-struktur-sprak-rekkefolge).
 
 ## Et eksempel: det så ferdig ut
 
@@ -87,6 +92,10 @@ for høyt.
 
 Testene brukte brøk, fordi det var det kalkulatoren var skrevet for. De sjekket det de ble skrevet
 for. Ingen test sjekket at det innstillingssiden lagrer, er det samme som kalkulatoren leser.
+
+Feilen følger mønsteret fra forrige del. At provisjonen skulle lagres som brøk, var en regel som
+ikke sto noe sted. Standardverdien i koden antydet den, men innstillingssiden hadde ingen grunn til å
+kjenne til den.
 
 Feilen ble funnet i juli, mens en annen endring i appen ble verifisert. Den gangen gjorde jeg
 verifiseringen med Claude Code, innlogget mot appen mens den kjørte. Claude Code så teksten, fant
@@ -136,28 +145,29 @@ En annen svakhet er grensene. Testene i provisjonseksempelet var riktige for hve
 av dem dekket overgangen mellom delene, og det var der feilen lå.
 
 Spørsmålet mange sitter med, er når det holder med automatiske tester og når man bør teste selv.
-Det har ikke et opplagt svar for den som ikke har gjort det mange ganger, og det blir sjelden sagt
-høyt.
+Mitt kriterium er hva testene dekker. Jeg stoler på dem når brukstilfellene og
+akseptansekriteriene de bygger på er riktige, og når de også sjekker negative tilfeller: det som
+ikke skal gå, verdier som skal avvises, tilstander som ikke skal oppstå. Tester som bare bekrefter
+at riktig input gir riktig svar, sier lite om resten.
 
-> ✍️ **F-R:** Når stoler du på de automatiske testene, og når tester du selv? Har du en
-> tommelfingerregel — for eksempel knyttet til hva som står på spill, hvem som skrev testene, eller
-> hvor godt du kjenner koden fra før?
+I provisjonseksempelet fantes det ikke noe kriterium for hva som skal skje når innstillingene og
+kalkulatoren møtes, og da fantes det heller ingen test for det.
 
 ## Å øve på vurderingen for seg
 
-Hvis vurderingen før kom som en bieffekt av å produsere, må den nå øves direkte. Noen grep følger av
-mekanismen over:
+Ferdigheten er ikke ny. Å vurdere kode fra en agent er kodegjennomgang, slik det har vært hele
+tiden: forstå endringene, og vær sikker på at de er riktige. Det som har endret seg, er veien dit.
+Før lærte du å vurdere andres kode fordi du hadde skrevet mye selv. Nå kan du stå med en endring til
+gjennomgang uten å ha skrevet noe tilsvarende først, og da må gjennomgangen øves for seg.
 
-- Les før du kjører. Da må du danne deg en forventning, og det er forventningen som gjør avvik
-  synlige.
-- Spør hva som ville fått løsningen til å feile, før du spør om den virker.
-- Be agenten forklare valgene sine, og sjekk forklaringen mot koden. Der de to ikke stemmer, er det
-  verdt å se nærmere.
-- Les testene før du leser koden. Da ser du hva som faktisk er sjekket, før koden har overbevist
-  deg.
+Noen grep følger av det over:
 
-> ✍️ **F-R:** Står du for disse fire grepene? Stryk det du ikke bruker eller ikke ville anbefalt, og
-> legg til det som mangler. Hvordan lærte du selv å vurdere kode du ikke hadde skrevet?
+- Les testene før koden. De viser hvilken logikk som er endret, og hva som faktisk er sjekket.
+- Se etter forretningsreglene. Der ligger feilene oftest, og der har agenten minst å gå på når
+  regelen ikke er beskrevet.
+- Sjekk at testene bygger på riktige akseptansekriterier, og at de også dekker negative tilfeller.
+- Når du finner en feil, spør om den skyldes noe som manglet i prompten eller konteksten. Da må
+  den rettes der også, ikke bare i koden.
 
 ## Hva jeg ikke har svar på
 
