@@ -1,7 +1,7 @@
 ---
 tittel: "Skarpe agentroller: én jobb, tydelige grenser"
 ingress: "En agentrolle i Claude Code er en kort fil med to felt som betyr noe: beskrivelsen som avgjør når den brukes, og instruksen den får når den kjører. Her er fem ekte roller fra mitt oppsett, og det jeg fant da jeg leste gjennom dem: overlapp og grenser jeg aldri hadde bestemt meg for."
-dato: 2026-10-13
+dato: 2026-10-20
 tags: [agenter, sub-agenter, claude-code, oppsett, agent-bruk]
 pilar: agent-bruk
 utkast: true
