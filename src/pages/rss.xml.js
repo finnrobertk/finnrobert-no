@@ -1,11 +1,12 @@
 import rss from '@astrojs/rss';
 import { getCollection } from 'astro:content';
+import { erPublisert } from '../lib/publisert.ts';
 
 // RSS-feed for lesere (RSS-/Atom-klienter). For maskin-til-maskin-kobling
 // med intello.no, se /feed.json — den er den primære kontrakten.
 
 export async function GET(context) {
-  const innlegg = (await getCollection('blogg', ({ data }) => !data.utkast)).sort(
+  const innlegg = (await getCollection('blogg', ({ data }) => erPublisert(data))).sort(
     (a, b) => b.data.dato.valueOf() - a.data.dato.valueOf(),
   );
 

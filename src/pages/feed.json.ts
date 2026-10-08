@@ -1,17 +1,18 @@
 import type { APIRoute } from 'astro';
 import { getCollection } from 'astro:content';
+import { erPublisert } from '../lib/publisert';
 
 // Maskinlesbar JSON-feed over publiserte blogginnlegg.
 // Dette er kontrakten intello.no konsumerer ved build-tid.
 // URL: https://finnrobert.no/feed.json
 //
 // Hvert innlegg: { tittel, ingress, url (absolutt), dato (ISO), pilar }
-// Utkast (utkast: true) utelates. Nyeste først.
+// Utkast og innlegg med dato fram i tid utelates (se lib/publisert.ts). Nyeste først.
 
 const SITE = 'https://finnrobert.no';
 
 export const GET: APIRoute = async () => {
-  const innlegg = (await getCollection('blogg', ({ data }) => !data.utkast)).sort(
+  const innlegg = (await getCollection('blogg', ({ data }) => erPublisert(data))).sort(
     (a, b) => b.data.dato.valueOf() - a.data.dato.valueOf(),
   );
 

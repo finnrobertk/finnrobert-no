@@ -3,9 +3,10 @@ import { getCollection, render } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import LesVidere from '../../components/LesVidere.astro';
 import { relaterteInnlegg } from '../../lib/relaterte';
+import { erPublisert } from '../../lib/publisert';
 
 export async function getStaticPaths() {
-  const innlegg = await getCollection('blogg', ({ data }) => !data.utkast);
+  const innlegg = await getCollection('blogg', ({ data }) => erPublisert(data));
   return innlegg.map((post) => ({
     params: { slug: post.id },
     props: { post, relaterte: relaterteInnlegg(post, innlegg) },

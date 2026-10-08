@@ -1,4 +1,5 @@
 import type { CollectionEntry } from 'astro:content';
+import { erPublisert } from './publisert';
 
 type Innlegg = CollectionEntry<'blogg'>;
 
@@ -7,14 +8,14 @@ type Innlegg = CollectionEntry<'blogg'>;
  *
  * Rangering: samme pilar først, deretter antall delte tags, deretter nyest.
  * Uavgjort brytes på id, så resultatet er deterministisk fra bygg til bygg.
- * Innlegget selv og utkast tas aldri med. Er det få treff, fylles listen
+ * Innlegget selv og upubliserte innlegg tas aldri med. Er det få treff, fylles listen
  * opp med de nyeste innleggene (de har bare lavere score i samme sortering).
  */
 export function relaterteInnlegg(post: Innlegg, alle: Innlegg[], antall = 3): Innlegg[] {
   const egneTags = new Set(post.data.tags);
 
   return alle
-    .filter((kandidat) => kandidat.id !== post.id && !kandidat.data.utkast)
+    .filter((kandidat) => kandidat.id !== post.id && erPublisert(kandidat.data))
     .map((kandidat) => ({
       kandidat,
       sammePilar: post.data.pilar !== undefined && kandidat.data.pilar === post.data.pilar ? 1 : 0,

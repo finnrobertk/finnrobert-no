@@ -2,10 +2,11 @@
 import type { APIRoute, GetStaticPaths } from 'astro';
 import { getCollection, type CollectionEntry } from 'astro:content';
 import { lagOgBilde, pngRespons } from '../../../lib/og';
+import { erPublisert } from '../../../lib/publisert';
 
 export const getStaticPaths = (async () => {
-  // Utkast får verken side eller delebilde.
-  const innlegg = await getCollection('blogg', ({ data }) => !data.utkast);
+  // Utkast og innlegg med dato fram i tid får verken side eller delebilde.
+  const innlegg = await getCollection('blogg', ({ data }) => erPublisert(data));
   return innlegg.map((post) => ({ params: { slug: post.id }, props: { post } }));
 }) satisfies GetStaticPaths;
 

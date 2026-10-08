@@ -1,5 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
+import { erPublisert } from '../lib/publisert';
 import BaseLayout from '../layouts/BaseLayout.astro';
 
 const pilarer = [
@@ -9,7 +10,7 @@ const pilarer = [
   { tittel: 'KI for norske selskaper', tekst: 'Avmystifisering — hva som gir reell verdi, og hva som bare er støy.' },
 ];
 
-const innlegg = (await getCollection('blogg', ({ data }) => !data.utkast))
+const innlegg = (await getCollection('blogg', ({ data }) => erPublisert(data)))
   .sort((a, b) => b.data.dato.valueOf() - a.data.dato.valueOf())
   .slice(0, 3);
 

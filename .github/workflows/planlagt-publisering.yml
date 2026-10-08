@@ -1,0 +1,27 @@
+# Planlagt publisering: bygger produksjon på nytt hver morgen, slik at innlegg med
+# `utkast: false` og `dato` = i dag går live uten at noen må pushe (se src/lib/publisert.ts).
+#
+# Krever repo-secret VERCEL_DEPLOY_HOOK (Vercel → Project → Settings → Git → Deploy Hooks, branch main).
+# Kan også kjøres for hånd fra GitHub-appen: Actions → Planlagt publisering → Run workflow.
+
+name: Planlagt publisering
+
+on:
+  schedule:
+    # 04:17 UTC = 06:17 sommertid / 05:17 vintertid. Unngår hel time, der GitHub-køen er lengst.
+    - cron: '17 4 * * *'
+  workflow_dispatch:
+
+jobs:
+  nybygg:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Vercel-deploy
+        env:
+          HOOK: ${{ secrets.VERCEL_DEPLOY_HOOK }}
+        run: |
+          if [ -z "$HOOK" ]; then
+            echo "::error::Secret VERCEL_DEPLOY_HOOK mangler"
+            exit 1
+          fi
+          curl --fail --silent --show-error -X POST "$HOOK"

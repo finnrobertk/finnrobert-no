@@ -1,8 +1,9 @@
 ---
 import { getCollection } from 'astro:content';
+import { erPublisert } from '../../lib/publisert';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 
-const innlegg = (await getCollection('blogg', ({ data }) => !data.utkast))
+const innlegg = (await getCollection('blogg', ({ data }) => erPublisert(data)))
   .sort((a, b) => b.data.dato.valueOf() - a.data.dato.valueOf());
 
 const datoFmt = (d: Date) => d.toLocaleDateString('nb-NO', { day: 'numeric', month: 'long', year: 'numeric' });

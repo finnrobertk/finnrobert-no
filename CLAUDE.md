@@ -24,6 +24,11 @@ på norsk. Personlig merkevare, holdt adskilt fra firmaet (intello.no).
 Lag `src/content/blogg/ÅÅÅÅ-MM-DD-tittel.md` med frontmatter. Sett `utkast: true` for å holde det
 ute av produksjon. Filnavnet (uten `.md`) blir URL-slug.
 
+**Planlagt publisering:** et innlegg vises bare når `utkast: false` OG `dato` er nådd (`src/lib/publisert.ts`).
+Sett `utkast: false` og framtidig `dato` kvelden før og push; `.github/workflows/planlagt-publisering.yml`
+bygger produksjon på nytt hver morgen kl. 04:17 UTC via Vercel deploy hook (secret `VERCEL_DEPLOY_HOOK`),
+og innlegget går live da. Bruk alltid `erPublisert()` når innlegg hentes, aldri `!data.utkast` alene.
+
 ## Kommandoer
 - `npm run dev` — lokal utvikling.
 - `npm run build` — statisk bygg til `dist/`.
