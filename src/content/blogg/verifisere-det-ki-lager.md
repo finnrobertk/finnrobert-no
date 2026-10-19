@@ -1,10 +1,10 @@
 ---
 tittel: "Å verifisere det KI lager"
 ingress: "Et KI-verktøy hever taket for hva du kan lage, raskere enn det hever taket for hva du kan vurdere. Før fulgte de to hverandre. Nå må vurderingen læres for seg."
-dato: 2026-10-13
+dato: 2026-10-20
 tags: [senior, ki, verifisering, testing, kodegjennomgang]
 pilar: senior-til-ki
-utkast: true
+utkast: false
 ---
 
 I august skrev jeg om [hvor en norsk bedrift bør begynne med KI](/blogg/ki-i-norsk-bedrift-hvor-du-begynner).
