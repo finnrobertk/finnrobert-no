@@ -35,6 +35,12 @@
   --text-2xl:  1.875rem;  /* 30px — h2 */
   --text-3xl:  2.5rem;    /* 40px — h1 */
   --text-4xl:  3.25rem;   /* 52px — hero */
+  /* Flytende display-størrelser (redaksjonell profil, okt. 2026) */
+  --text-display: clamp(2.875rem, 7.6vw, 6.75rem);  /* 46→108px — forside-hero */
+  --text-title:   clamp(2.5rem, 6vw, 5rem);         /* 40→80px — innleggstittel */
+
+  /* Fraunces' SOFT-akse: litt mykere bokstavformer i store titler */
+  --heading-soft: "SOFT" 30;
 
   /* --- Typografi: vekt / linje --- */
   --weight-normal:   400;
@@ -69,17 +75,17 @@
    Mørk modus — eksplisitt valg
    ========================================================================== */
 [data-theme="dark"] {
-  --color-primary:        #2DD4BF;
-  --color-primary-strong: #14B8A6;
-  --color-accent:         #FB923C;
+  --color-primary:        #5EC4B6;
+  --color-primary-strong: #86D6CB;
+  --color-accent:         #F08A5D;
 
-  --color-bg:      #0E1413; /* dyp teal-svart */
-  --color-surface: #16201E;
-  --color-border:  #2A3431;
+  --color-bg:      #151311; /* varm blekk-svart — lik papirets lyse modus, bare snudd */
+  --color-surface: #1F1C19;
+  --color-border:  #34302B;
 
-  --color-text:       #E8E6E1;
-  --color-text-muted: #9E9A92;
-  --color-on-primary: #0E1413;
+  --color-text:       #EDE8DF;
+  --color-text-muted: #A69F94;
+  --color-on-primary: #151311;
 
   --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
   --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.5);
@@ -88,17 +94,17 @@
 /* Følg OS-preferanse når brukeren ikke har valgt eksplisitt */
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --color-primary:        #2DD4BF;
-    --color-primary-strong: #14B8A6;
-    --color-accent:         #FB923C;
+    --color-primary:        #5EC4B6;
+    --color-primary-strong: #86D6CB;
+    --color-accent:         #F08A5D;
 
-    --color-bg:      #0E1413;
-    --color-surface: #16201E;
-    --color-border:  #2A3431;
+    --color-bg:      #151311;
+    --color-surface: #1F1C19;
+    --color-border:  #34302B;
 
-    --color-text:       #E8E6E1;
-    --color-text-muted: #9E9A92;
-    --color-on-primary: #0E1413;
+    --color-text:       #EDE8DF;
+    --color-text-muted: #A69F94;
+    --color-on-primary: #151311;
 
     --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
     --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.5);

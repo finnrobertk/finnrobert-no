@@ -36,50 +36,52 @@ const avkort = (tekst: string) => {
 )}
 
 <style>
+  /* Redaksjonell stil: kraftig linje, mono-etikett og titler i Fraunces uten kortbokser */
   .les-videre {
     margin-top: var(--space-2xl);
-    padding-top: var(--space-lg);
-    border-top: 1px solid var(--color-border);
+    padding-top: var(--space-sm);
+    border-top: 1px solid var(--color-text);
   }
   .les-videre__tittel {
-    font-size: var(--text-xl);
     margin: 0 0 var(--space-md);
+    font-family: var(--font-mono);
+    font-variation-settings: normal;
+    font-size: var(--text-sm);
+    font-weight: var(--weight-medium);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
   }
   .les-videre__liste {
     list-style: none;
     padding: 0;
     margin: 0;
     display: grid;
-    gap: var(--space-sm);
   }
   .les-videre__kort {
-    /* Hele kortet er klikkbart via lenkens ::after — én lenke per kort for skjermlesere. */
+    /* Hele raden er klikkbar via lenkens ::after — én lenke per kort for skjermlesere. */
     position: relative;
     display: flex;
     flex-direction: column;
     gap: var(--space-3xs);
-    padding: var(--space-sm) var(--space-md);
-    background: var(--color-surface);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-md);
-    transition: border-color 0.15s ease;
+    padding-block: var(--space-md);
+    border-bottom: 1px solid var(--color-border);
   }
-  .les-videre__kort:hover {
-    border-color: var(--color-primary);
-  }
+  .les-videre__kort:first-child { padding-top: 0; }
   .les-videre__korttittel {
-    font-size: var(--text-lg);
+    font-size: var(--text-xl);
+    font-weight: 480;
+    line-height: 1.2;
     margin: 0;
   }
   .les-videre__korttittel a {
     color: var(--color-text);
     text-decoration: none;
+    transition: color 0.15s ease;
   }
   .les-videre__korttittel a::after {
     content: '';
     position: absolute;
     inset: 0;
-    border-radius: var(--radius-md);
   }
   .les-videre__kort:hover .les-videre__korttittel a {
     color: var(--color-primary);
@@ -94,13 +96,14 @@ const avkort = (tekst: string) => {
   .les-videre__ingress {
     margin: 0;
     color: var(--color-text-muted);
-    font-size: var(--text-sm);
+    font-size: 1rem;
+    line-height: 1.6;
   }
   .les-videre__dato {
     color: var(--color-text-muted);
-    font-size: var(--text-xs);
+    font-size: var(--text-sm);
   }
   @media (prefers-reduced-motion: reduce) {
-    .les-videre__kort { transition: none; }
+    .les-videre__korttittel a { transition: none; }
   }
 </style>

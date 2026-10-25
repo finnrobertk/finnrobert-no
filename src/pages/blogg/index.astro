@@ -1,6 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import { erPublisert } from '../../lib/publisert';
+import { pilarNavn } from '../../lib/pilarer';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 
 const innlegg = (await getCollection('blogg', ({ data }) => erPublisert(data)))
@@ -10,7 +11,7 @@ const datoFmt = (d: Date) => d.toLocaleDateString('nb-NO', { day: 'numeric', mon
 ---
 
 <BaseLayout tittel="Blogg" beskrivelse="Praktiske tekster om KI, context engineering og agent-bruk — på norsk.">
-  <h1>Blogg</h1>
+  <h1 class="blogg__tittel">Blogg</h1>
   <p class="prose muted" style="font-size: var(--text-lg);">
     Praktiske tekster om KI, context engineering og hvordan jeg jobber med agenter.
   </p>
@@ -21,9 +22,12 @@ const datoFmt = (d: Date) => d.toLocaleDateString('nb-NO', { day: 'numeric', mon
     <ul class="innleggsliste">
       {innlegg.map((post) => (
         <li class="innlegg">
-          <time class="muted text-sm" datetime={post.data.dato.toISOString()}>{datoFmt(post.data.dato)}</time>
+          <p class="innlegg__meta">
+            {pilarNavn(post.data.pilar) && <span class="kicker kicker--aksent">{pilarNavn(post.data.pilar)}</span>}
+            <time class="muted text-sm" datetime={post.data.dato.toISOString()}>{datoFmt(post.data.dato)}</time>
+          </p>
           <h2 class="innlegg__tittel"><a href={`/blogg/${post.id}`}>{post.data.tittel}</a></h2>
-          <p class="muted">{post.data.ingress}</p>
+          <p class="muted innlegg__ingress">{post.data.ingress}</p>
           {post.data.tags.length > 0 && (
             <p class="innlegg__tags">{post.data.tags.map((t) => <span class="tag">{t}</span>)}</p>
           )}
@@ -34,14 +38,23 @@ const datoFmt = (d: Date) => d.toLocaleDateString('nb-NO', { day: 'numeric', mon
 </BaseLayout>
 
 <style>
-  .innleggsliste { list-style: none; padding: 0; margin-top: var(--space-lg); }
+  .blogg__tittel { font-size: var(--text-title); margin-bottom: var(--space-md); }
+  .innleggsliste { list-style: none; padding: 0; margin-top: var(--space-xl); border-top: 1px solid var(--color-text); }
   .innlegg {
     padding-block: var(--space-lg);
-    border-top: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--color-border);
   }
-  .innlegg__tittel { font-size: var(--text-2xl); margin: var(--space-3xs) 0 var(--space-2xs); }
+  .innlegg__meta { display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--space-2xs) var(--space-md); }
+  .innlegg__tittel {
+    font-size: clamp(1.75rem, 3vw, 2.25rem);
+    font-weight: 440;
+    line-height: 1.12;
+    letter-spacing: -0.015em;
+    margin: var(--space-2xs) 0 var(--space-2xs);
+  }
   .innlegg__tittel a { color: var(--color-text); text-decoration: none; }
   .innlegg__tittel a:hover { color: var(--color-primary); }
   .innlegg p { margin-bottom: var(--space-2xs); }
+  .innlegg__ingress { max-width: var(--measure); }
   .innlegg__tags { display: flex; flex-wrap: wrap; gap: var(--space-3xs); }
 </style>

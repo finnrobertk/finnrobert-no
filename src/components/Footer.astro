@@ -4,17 +4,17 @@ const år = new Date().getFullYear();
 
 <footer class="footer">
   <div class="wrap footer__inner">
-    <p class="muted text-sm">© {år} Finn-Robert Kristensen. Skrevet på norsk, om KI i praksis.</p>
-    <p class="muted text-sm">
-      <a href="/kontakt">Kontakt</a> · Driver <a href="https://intello.no">Intello</a>
+    <p>© {år} Finn-Robert Kristensen. Skrevet på norsk, om KI i praksis.</p>
+    <p class="footer__lenker">
+      <a href="/rss.xml">RSS</a>
+      <a href="/kontakt">Kontakt</a>
+      <span>Driver <a href="https://intello.no">Intello</a></span>
     </p>
   </div>
 </footer>
 
 <style>
   .footer {
-    border-top: 1px solid var(--color-border);
-    padding-block: var(--space-lg);
     margin-top: var(--space-2xl);
   }
   .footer__inner {
@@ -22,6 +22,15 @@ const år = new Date().getFullYear();
     flex-wrap: wrap;
     gap: var(--space-xs) var(--space-md);
     justify-content: space-between;
+    padding-block: var(--space-md) var(--space-lg);
+    border-top: 1px solid var(--color-border);
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
   }
   .footer__inner p { margin: 0; }
+  .footer__lenker {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2xs) var(--space-md);
+  }
 </style>

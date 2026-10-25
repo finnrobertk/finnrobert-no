@@ -1,9 +1,12 @@
 ---
 import { getCollection, render } from 'astro:content';
+import { Image } from 'astro:assets';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import LesVidere from '../../components/LesVidere.astro';
 import { relaterteInnlegg } from '../../lib/relaterte';
 import { erPublisert } from '../../lib/publisert';
+import { pilarNavn } from '../../lib/pilarer';
+import portrett from '../../assets/finn-robert.jpg';
 
 export async function getStaticPaths() {
   const innlegg = await getCollection('blogg', ({ data }) => erPublisert(data));
@@ -14,7 +17,11 @@ export async function getStaticPaths() {
 }
 
 const { post, relaterte } = Astro.props;
-const { Content } = await render(post);
+const { Content, headings } = await render(post);
+// Innholdsfortegnelse i margen: bare h2, og bare når det er nok av dem til å hjelpe.
+const toc = headings.filter((h) => h.depth === 2);
+// Lesetid: ~220 ord i minuttet, avrundet opp.
+const lesetid = Math.max(1, Math.ceil((post.body ?? '').split(/\s+/).filter(Boolean).length / 220));
 const datoFmt = (d: Date) => d.toLocaleDateString('nb-NO', { day: 'numeric', month: 'long', year: 'numeric' });
 
 // Absolutt kanonisk URL til innlegget — samme verdi brukes til både LinkedIn-deling og kopier-knapp.
@@ -29,44 +36,71 @@ const linkedInUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encod
   ogBildeAlt={`«${post.data.tittel}» — blogginnlegg av Finn-Robert Kristensen på finnrobert.no`}
   publisert={post.data.dato}
 >
-  <article class="prose">
-    <a href="/blogg" class="text-sm muted">← Alle innlegg</a>
-    <header style="margin-block: var(--space-md) var(--space-lg);">
-      <time class="muted text-sm" datetime={post.data.dato.toISOString()}>{datoFmt(post.data.dato)}</time>
-      <h1 style="margin-top: var(--space-2xs);">{post.data.tittel}</h1>
-      <p class="muted" style="font-size: var(--text-lg);">{post.data.ingress}</p>
-    </header>
-    <Content />
-
-    <div class="del-rad" data-innlegg-url={innleggUrl}>
-      <span class="del-rad__tekst">Likte du dette? Del det:</span>
-      <a
-        class="del-rad__lenke"
-        href={linkedInUrl}
-        target="_blank"
-        rel="noopener"
-      >
-        <svg class="del-rad__ikon" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false">
-          <path fill="currentColor" d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.22.79 24 1.77 24h20.45c.98 0 1.78-.78 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/>
-        </svg>
-        Del på LinkedIn
-      </a>
-      <button class="del-rad__lenke del-rad__kopier" type="button">
-        Kopier lenke
-      </button>
-      <span class="del-rad__status" role="status" aria-live="polite"></span>
-    </div>
-
-    <LesVidere innlegg={relaterte} />
-
-    <aside class="retur-cta" aria-label="Om Intello">
-      <p class="retur-cta__tekst">
-        Jobber du med dette i praksis? <strong>Intello</strong> hjelper selskaper med arkitektur, sky og KI.
+  <article class="innlegg">
+    <header class="innlegg__hode">
+      <a href="/blogg" class="innlegg__tilbake text-sm">← Alle innlegg</a>
+      {pilarNavn(post.data.pilar) && <p class="kicker kicker--aksent">{pilarNavn(post.data.pilar)}</p>}
+      <h1 class="innlegg__tittel">{post.data.tittel}</h1>
+      <p class="innlegg__ingress">{post.data.ingress}</p>
+      <p class="innlegg__meta">
+        Finn-Robert Kristensen · <time datetime={post.data.dato.toISOString()}>{datoFmt(post.data.dato)}</time> · {lesetid} min lesing
       </p>
-      <a class="retur-cta__lenke" href="https://intello.no" rel="noopener">
-        intello.no →
-      </a>
-    </aside>
+    </header>
+
+    <div class="innlegg__kropp">
+      {toc.length >= 2 && (
+        <nav class="toc" aria-label="Innhold">
+          <p class="kicker">I dette innlegget</p>
+          <ol>
+            {toc.map((h) => <li><a href={`#${h.slug}`}>{h.text}</a></li>)}
+          </ol>
+        </nav>
+      )}
+
+      <div class="innlegg__kolonne">
+        <div class="prose innlegg__tekst">
+          <Content />
+        </div>
+
+        <aside class="forfatter" aria-label="Om forfatteren">
+          <Image src={portrett} alt="" widths={[72, 144]} sizes="72px" class="forfatter__bilde" />
+          <div>
+            <p class="forfatter__navn">Finn-Robert Kristensen</p>
+            <p class="forfatter__tekst">Løsningsarkitekt og senior backendutvikler. Skriver om hvordan jeg faktisk jobber med KI. <a href="/om">Mer om meg →</a></p>
+          </div>
+        </aside>
+
+        <div class="del-rad" data-innlegg-url={innleggUrl}>
+          <span class="del-rad__tekst">Likte du dette? Del det:</span>
+          <a
+            class="del-rad__lenke"
+            href={linkedInUrl}
+            target="_blank"
+            rel="noopener"
+          >
+            <svg class="del-rad__ikon" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false">
+              <path fill="currentColor" d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.22.79 24 1.77 24h20.45c.98 0 1.78-.78 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/>
+            </svg>
+            Del på LinkedIn
+          </a>
+          <button class="del-rad__lenke del-rad__kopier" type="button">
+            Kopier lenke
+          </button>
+          <span class="del-rad__status" role="status" aria-live="polite"></span>
+        </div>
+
+        <LesVidere innlegg={relaterte} />
+
+        <aside class="retur-cta" aria-label="Om Intello">
+          <p class="retur-cta__tekst">
+            Jobber du med dette i praksis? <strong>Intello</strong> hjelper selskaper med arkitektur, sky og KI.
+          </p>
+          <a class="retur-cta__lenke" href="https://intello.no" rel="noopener">
+            intello.no →
+          </a>
+        </aside>
+      </div>
+    </div>
   </article>
 </BaseLayout>
 
@@ -94,13 +128,116 @@ const linkedInUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encod
 </script>
 
 <style>
+  /* Innleggshode: sentrert, med stor Fraunces-tittel og ingress i kursiv */
+  .innlegg__hode {
+    max-width: 58rem;
+    margin: 0 auto;
+    padding-bottom: var(--space-lg);
+    text-align: center;
+  }
+  .innlegg__tilbake { display: inline-block; margin-bottom: var(--space-lg); color: var(--color-text-muted); }
+  .innlegg__hode .kicker { margin: 0 0 var(--space-md); }
+  .innlegg__tittel {
+    margin: 0 auto;
+    max-width: 16ch;
+    font-size: var(--text-title);
+    font-weight: 380;
+    line-height: 1.04;
+  }
+  .innlegg__ingress {
+    margin: var(--space-lg) auto 0;
+    max-width: 34ch;
+    font-family: var(--font-heading);
+    font-style: italic;
+    font-weight: 340;
+    font-size: clamp(1.3rem, 2.2vw, 1.625rem);
+    line-height: 1.45;
+    color: var(--color-text-muted);
+  }
+  .innlegg__meta {
+    margin: var(--space-lg) 0 0;
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+  }
+
+  .innlegg__kropp {
+    border-top: 1px solid var(--color-border);
+    padding-top: var(--space-xl);
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-xl);
+  }
+  .innlegg__kolonne { min-width: 0; max-width: var(--measure); }
+
+  /* Innholdsfortegnelsen står i margen på brede skjermer, og skjules ellers */
+  .toc { display: none; }
+  @media (min-width: 64rem) {
+    .innlegg__kropp { grid-template-columns: 13rem minmax(0, var(--measure)); justify-content: center; }
+    .toc {
+      display: block;
+      position: sticky;
+      top: var(--space-lg);
+      align-self: start;
+      font-size: var(--text-sm);
+      line-height: 1.5;
+    }
+  }
+  .toc .kicker { margin: 0 0 var(--space-xs); }
+  .toc ol { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: var(--space-2xs); }
+  .toc a {
+    display: block;
+    padding-left: var(--space-xs);
+    border-left: 2px solid var(--color-border);
+    color: var(--color-text-muted);
+    text-decoration: none;
+  }
+  .toc a:hover { color: var(--color-text); border-left-color: var(--color-accent); }
+
+  /* Stor forbokstav i terrakotta på første avsnitt */
+  .innlegg__tekst > :global(p:first-of-type)::first-letter {
+    float: left;
+    font-family: var(--font-heading);
+    font-weight: 400;
+    font-size: 5.25rem;
+    line-height: 0.82;
+    padding: 0.4rem 0.6rem 0 0;
+    color: var(--color-accent);
+  }
+
+  .forfatter {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-md);
+    margin-top: var(--space-2xl);
+    padding-block: var(--space-md);
+    border-top: 1px solid var(--color-text);
+    border-bottom: 1px solid var(--color-border);
+  }
+  .forfatter :global(.forfatter__bilde) {
+    width: 72px;
+    height: 72px;
+    border-radius: var(--radius-full);
+    object-fit: cover;
+    object-position: center 20%;
+    flex: none;
+  }
+  .forfatter > div { flex: 1 1 18rem; }
+  .forfatter__navn {
+    margin: 0;
+    font-family: var(--font-heading);
+    font-weight: var(--weight-semibold);
+    font-size: var(--text-lg);
+  }
+  .forfatter__tekst { margin: var(--space-3xs) 0 0; font-size: 1rem; line-height: 1.55; color: var(--color-text-muted); }
+
   /* Diskret del-rad nederst i innlegget — matcher retur-CTA-ens lavmælte uttrykk. */
   .del-rad {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     gap: var(--space-2xs) var(--space-md);
-    margin-top: var(--space-2xl);
+    margin-top: var(--space-lg);
     color: var(--color-text-muted);
     font-size: var(--text-sm);
   }
@@ -147,7 +284,6 @@ const linkedInUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encod
     padding: var(--space-md);
     background: var(--color-surface);
     border: 1px solid var(--color-border);
-    border-left: 3px solid var(--color-primary);
     border-radius: var(--radius-md);
     display: flex;
     flex-wrap: wrap;

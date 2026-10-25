@@ -1,87 +1,108 @@
 ---
 const nav = [
-  { href: '/', tekst: 'Hjem' },
   { href: '/blogg', tekst: 'Blogg' },
-  { href: '/om', tekst: 'Om meg' },
+  { href: '/om', tekst: 'Om' },
   { href: '/kontakt', tekst: 'Kontakt' },
 ];
 const sti = Astro.url.pathname;
-const aktiv = (href: string) => href === '/' ? sti === '/' : sti.startsWith(href);
+const aktiv = (href: string) => sti.startsWith(href);
 ---
 
 <header class="header">
-  <div class="wrap header__inner">
-    <a href="/" class="header__brand">Finn&#8209;Robert Kristensen</a>
-    <nav class="header__nav" aria-label="Hovedmeny">
-      {nav.map((n) => (
-        <a href={n.href} aria-current={aktiv(n.href) ? 'page' : undefined}>{n.tekst}</a>
-      ))}
-      <button id="theme-toggle" class="header__theme" type="button" aria-label="Bytt fargetema">
-        <span aria-hidden="true">◐</span>
-      </button>
-    </nav>
+  <div class="wrap">
+    <div class="header__inner">
+      <a href="/" class="header__brand" aria-label="finnrobert.no — til forsiden">finnrobert<span class="header__prikk">.</span>no</a>
+      <nav class="header__nav" aria-label="Hovedmeny">
+        {nav.map((n) => (
+          <a href={n.href} aria-current={aktiv(n.href) ? 'page' : undefined}>{n.tekst}</a>
+        ))}
+        <button id="theme-toggle" class="header__theme" type="button" aria-label="Bytt mellom lys og mørk modus">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+        </button>
+      </nav>
+    </div>
+    <div class="header__linje">
+      <span>Praktisk KI, vist i praksis</span>
+      <span class="header__pilarer">Context engineering · Agent-bruk · Senior til KI · KI for selskaper</span>
+    </div>
   </div>
 </header>
 
 <style>
-  .header {
-    border-bottom: 1px solid var(--color-border);
-    background: color-mix(in srgb, var(--color-bg) 88%, transparent);
-    backdrop-filter: blur(8px);
-    position: sticky;
-    top: 0;
-    z-index: 10;
-  }
+  /* Avismasthead: navn og meny over en kraftig linje, med en tynn mono-linje under. */
   .header__inner {
     display: flex;
     flex-wrap: wrap;                       /* la menyen brytes på smale skjermer */
     align-items: center;
     justify-content: space-between;
     gap: var(--space-2xs) var(--space-md); /* rad-gap når den brytes til to linjer */
-    padding-block: var(--space-sm);
+    padding-block: var(--space-md) var(--space-sm);
+    border-bottom: 1px solid var(--color-text);
   }
   .header__brand {
     font-family: var(--font-heading);
     font-weight: var(--weight-semibold);
-    font-size: var(--text-lg);
+    font-size: var(--text-xl);
+    letter-spacing: -0.01em;
     color: var(--color-text);
     text-decoration: none;
   }
+  .header__prikk { color: var(--color-accent); }
   .header__nav {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    gap: var(--space-xs) var(--space-md);
+    gap: var(--space-xs) var(--space-lg);
   }
   .header__nav a {
-    color: var(--color-text-muted);
+    color: var(--color-text);
     text-decoration: none;
     font-size: var(--text-sm);
+    font-weight: var(--weight-medium);
     padding-block: var(--space-2xs);       /* større trefflate */
+    text-underline-offset: 6px;
   }
   .header__nav a:hover,
-  .header__nav a[aria-current='page'] { color: var(--color-text); }
+  .header__nav a[aria-current='page'] { color: var(--color-accent); }
+  .header__nav a[aria-current='page'] { text-decoration: underline; text-decoration-thickness: 1px; }
   .header__theme {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     background: none;
     border: 1px solid var(--color-border);
-    color: var(--color-text-muted);
+    color: var(--color-text);
     border-radius: var(--radius-full);
-    width: 2.25rem;
-    height: 2.25rem;
+    width: 2.75rem;
+    height: 2.75rem;
     cursor: pointer;
-    line-height: 1;
     flex-shrink: 0;
   }
-  .header__theme:hover { color: var(--color-text); }
+  .header__theme:hover { border-color: var(--color-text); }
+
+  .header__linje {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: var(--space-2xs) var(--space-md);
+    padding-block: var(--space-2xs);
+    border-bottom: 1px solid var(--color-border);
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+  }
 
   /* Smale telefoner: la menyen ta hele bredden under logoen, jevnt fordelt */
   @media (max-width: 30rem) {
-    .header__brand { font-size: var(--text-base); }
+    .header__brand { font-size: var(--text-lg); }
     .header__nav {
       width: 100%;
       justify-content: space-between;
       gap: var(--space-sm);
     }
+    .header__pilarer { display: none; }
   }
 </style>
 

@@ -18,6 +18,7 @@ på norsk. Personlig merkevare, holdt adskilt fra firmaet (intello.no).
 - `src/components/` — `Header.astro`, `Footer.astro`.
 - `src/pages/` — `index.astro` (forside), `om.astro`, `kontakt.astro`, `blogg/index.astro`,
   `blogg/[...slug].astro` (innlegg-mal).
+- `src/lib/pilarer.ts` — de fire pilarene (slug → navn/tekst), brukt på forside, bloggliste og innlegg.
 - `src/content/blogg/*.md` — blogginnlegg. Frontmatter: `tittel, ingress, dato, tags, pilar, utkast`.
 
 ## Skrive et nytt innlegg

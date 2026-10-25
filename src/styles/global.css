@@ -19,10 +19,18 @@ body {
 h1, h2, h3, h4 {
   font-family: var(--font-heading);
   line-height: var(--leading-heading);
-  font-weight: var(--weight-semibold);
+  font-weight: var(--weight-medium);
+  font-variation-settings: var(--heading-soft);
+  letter-spacing: -0.01em;
   margin: 0 0 var(--space-sm);
 }
-h1 { font-size: var(--text-3xl); }
+/* Store titler får lettere vekt og strammere spenn — Fraunces skal få jobbe i full størrelse */
+h1 {
+  font-size: var(--text-3xl);
+  font-weight: 380;
+  letter-spacing: -0.025em;
+  line-height: 1.05;
+}
 h2 { font-size: var(--text-2xl); }
 h3 { font-size: var(--text-xl); }
 
@@ -62,7 +70,25 @@ hr { border: none; border-top: 1px solid var(--color-border); margin: var(--spac
 }
 .prose { max-width: var(--measure); }
 .prose > * + * { margin-top: var(--space-md); }
-.prose h2 { margin-top: var(--space-lg); }
+.prose h2 { margin-top: var(--space-xl); }
+
+/* Sitat i innlegg: uthevet sitat i kursiv Fraunces og terrakotta */
+.prose blockquote {
+  margin: var(--space-xl) 0;
+  padding: 0;
+  border: none;
+  font-family: var(--font-heading);
+  font-style: italic;
+  font-weight: 340;
+  font-size: clamp(1.5rem, 3vw, 2.125rem);
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  color: var(--color-accent);
+}
+.prose blockquote p { margin: 0; }
+.prose ul, .prose ol { padding-left: 1.4em; }
+.prose li + li { margin-top: var(--space-2xs); }
+.prose li::marker { color: var(--color-text-muted); }
 
 /* Tabeller i innlegg (markdown). Tynne kantlinjer i tokenfargen så cellene
    kan skilles fra hverandre — innspill fra en leser, sept. 2026. */
@@ -99,17 +125,54 @@ hr { border: none; border-top: 1px solid var(--color-border); margin: var(--spac
 .muted { color: var(--color-text-muted); }
 .text-sm { font-size: var(--text-sm); }
 
-/* Knapp / pille */
+/* Knapp / pille — mørk «blekk»-pille, snur seg i mørk modus */
 .btn {
-  display: inline-block;
-  background: var(--color-primary);
-  color: var(--color-on-primary);
-  padding: var(--space-2xs) var(--space-md);
+  display: inline-flex;
+  align-items: center;
+  min-height: 3rem;
+  background: var(--color-text);
+  color: var(--color-bg);
+  padding: 0 var(--space-md);
   border-radius: var(--radius-full);
   text-decoration: none;
   font-weight: var(--weight-medium);
+  font-size: var(--text-sm);
 }
-.btn:hover { background: var(--color-primary-strong); color: var(--color-on-primary); }
+.btn:hover { background: var(--color-primary); color: var(--color-on-primary); }
+
+/* Kicker / seksjonsetikett i mono versaler */
+.kicker {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  font-weight: var(--weight-medium);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+.kicker--aksent { color: var(--color-accent); }
+
+/* Seksjonshode: kraftig linje over, mono-etikett og ev. lenke til høyre */
+.seksjonshode {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: var(--space-2xs) var(--space-md);
+  border-top: 1px solid var(--color-text);
+  padding-top: var(--space-sm);
+  margin-bottom: var(--space-lg);
+}
+.seksjonshode h2 {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-variation-settings: normal;
+  font-size: var(--text-sm);
+  font-weight: var(--weight-medium);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text);
+}
+.seksjonshode a { font-size: var(--text-sm); font-weight: var(--weight-medium); }
 
 .tag {
   display: inline-block;
